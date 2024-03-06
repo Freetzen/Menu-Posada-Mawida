@@ -5,10 +5,6 @@ const drinksSchema = new Schema({
     type: String,
     required: true,
   },
-  accompaniment: {
-    type: String,
-    required: false,
-  },
   price: {
     type: Number,
     required: true
