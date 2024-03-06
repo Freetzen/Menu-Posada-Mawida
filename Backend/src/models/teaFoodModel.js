@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-const midAfterFoodSchema = new Schema({
+const teaFoodSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -20,6 +20,6 @@ const midAfterFoodSchema = new Schema({
   }
 });
 
-const midAfterFoodModel = model("midAfterFood", midAfterFoodSchema)
+const teaFoodModel = model("teaFood", teaFoodSchema)
 
-export default midAfterFoodModel;
+export default teaFoodModel;
