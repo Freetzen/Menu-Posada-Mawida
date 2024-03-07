@@ -8,7 +8,7 @@ const getUserAdminController = async (req, res) => {
     if(email && password){
         const userDB = await findUserByEmail(email)
         const passwordValidate = validatePassword(password, userDB.password)
-        if(passwordValidate === true){
+        if(passwordValidate){
             return res.status(200).json({login: true})
         }else{
             return res.status(301).json({login: false, message: 'Credenciales incorrectas.'})
