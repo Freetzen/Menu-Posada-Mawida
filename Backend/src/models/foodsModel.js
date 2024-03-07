@@ -17,6 +17,10 @@ const foodSchema = new Schema({
     type: String,
     required: false,
   },
+  stock: {
+    type: Boolean,
+    default: true
+  },
   category: {
     type: Array,
     default: []

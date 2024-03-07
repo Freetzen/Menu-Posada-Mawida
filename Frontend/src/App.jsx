@@ -1,11 +1,10 @@
-import { useState } from 'react'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
+import axios from 'axios'
 import Home from './pages/home/Home'
 import Admin from './pages/adminWindow/AdminWindow'
 import MainFoodMenu from './pages/mainFoodMenu/MainFoodMenu'
-
-
+axios.defaults.baseURL = 'http://localhost:3001'
 
 function App() {
 

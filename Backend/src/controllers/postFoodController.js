@@ -2,12 +2,13 @@ import { createFood } from "../services/foodServices.js";
 
 export const postFoodController = async (req, res) => {
     try {
-        const {name, accompaniment, price} = req.body
+        const {name, accompaniment, price, image} = req.body
         if(name && accompaniment && price){
             const food = await createFood({
                 name,
                 accompaniment,
-                price
+                price,
+                image
               })
               if(food){
                 return res.status(200).json(food);
