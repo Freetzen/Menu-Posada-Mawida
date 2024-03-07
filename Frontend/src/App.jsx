@@ -7,6 +7,8 @@ import Admin from './pages/adminWindow/AdminWindow'
 import MainFoodMenu from './pages/mainFoodMenu/MainFoodMenu'
 import Footer from './components/footer/Footer'
 
+
+
 function App() {
 
   return (
