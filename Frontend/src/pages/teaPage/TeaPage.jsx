@@ -10,19 +10,20 @@ const TeaPage = () => {
     const [drinks, setDrinks] = useState([])
     const [meals, setMeals] = useState([])
 
-    const bringMeals = async () => {
-        const mealsBD = await foodProvider.getFood()
-        const mealsTea = mealsBD.filter(item => item.category.includes(currentCategory))
-        setMeals(mealsTea)
-    }
-
-    const bringDrinks = async () => {
-        const drinksBD = await drinksProvider.getDrinks();
-        const drinksTea = drinksBD.filter(item => item.category.includes(currentCategory))
-        setDrinks(drinksTea)
-    }
 
     useEffect(() => {
+        const bringMeals = async () => {
+            const mealsBD = await foodProvider.getFood()
+            const mealsTea = mealsBD.filter(item => item.category.includes(currentCategory))
+            setMeals(mealsTea)
+        }
+
+        const bringDrinks = async () => {
+            const drinksBD = await drinksProvider.getDrinks();
+            const drinksTea = drinksBD.filter(item => item.category.includes(currentCategory))
+            setDrinks(drinksTea)
+        }
+
         bringDrinks()
         bringMeals()
     }, [])
@@ -33,10 +34,10 @@ const TeaPage = () => {
                 <NavLink to='/'>
                     <button>Back to Menu</button>
                 </NavLink>
-                <NavLink to='/lunch'>
+                <NavLink to='/lunchdinner'>
                     <button>Lunch/Dinner</button>
                 </NavLink>
-                <NavLink to='/bar'>
+                <NavLink to='/barfridge'>
                     <button>Bar Fridge</button>
                 </NavLink>
             </div>
@@ -64,6 +65,7 @@ const TeaPage = () => {
                                 id={item._id}
                                 name={item.name}
                                 price={item.price}
+                                image={item.image}
                             />
                         ))
                     }
@@ -73,10 +75,10 @@ const TeaPage = () => {
                 <NavLink to='/'>
                     <button>Back to Menu</button>
                 </NavLink>
-                <NavLink to='/lunch'>
+                <NavLink to='/lunchdinner'>
                     <button>Lunch/Dinner</button>
                 </NavLink>
-                <NavLink to='/bar'>
+                <NavLink to='/barfridge'>
                     <button>Bar Fridge</button>
                 </NavLink>
             </div>

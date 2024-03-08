@@ -5,9 +5,11 @@ const DrinksCard = (props) => {
     return (
         <div>
             <NavLink to={`/drinkdetail/${props.id}`}>
-                <p>{props.name}</p>
-                <p>{props.image ? props.image : 'Default image'}</p>
-                <p>$ {props.price}</p>
+                <div>
+                    <p>{props.name}</p>
+                    <img src={props.image} />
+                    <p>$ {props.price}</p>
+                </div>
             </NavLink>
         </div>
     )
