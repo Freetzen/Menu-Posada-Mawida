@@ -16,6 +16,9 @@ function App() {
         <Route path='/admin' element={<Admin />} />
         <Route path='/foodMenu' element={<MainFoodMenu />} />
         <Route path='/teapage' element={<TeaPage />} />
+        <Route path='/mealdetail/:id' element={'Aqui va el componente detail de los platos'} />
+        <Route path='/drinkdetail/:id' element={'Aqui va el componente detail de las drinks'} />
+        <Route path='/dessertdetail/:id' element={'Aqui va el componente detail de los desserts'} />
       </Routes>
     </>
   )
