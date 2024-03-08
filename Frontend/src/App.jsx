@@ -4,6 +4,7 @@ import axios from 'axios'
 import Home from './pages/home/Home'
 import Admin from './pages/adminWindow/AdminWindow'
 import MainFoodMenu from './pages/mainFoodMenu/MainFoodMenu'
+import TeaPage from './pages/teaPage/TeaPage'
 axios.defaults.baseURL = 'http://localhost:3001'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/admin' element={<Admin />} />
         <Route path='/foodMenu' element={<MainFoodMenu />} />
+        <Route path='/teapage' element={<TeaPage />} />
       </Routes>
     </>
   )

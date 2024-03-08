@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-const teaProvider = {
+const foodProvider = {
 
-    async getFood () {
+    async getFood() {
         try {
             const food = await axios.get('/food')
             return food.data
@@ -10,7 +10,7 @@ const teaProvider = {
             console.log(error.message)
         }
     },
-    async postFood (foodObject) {
+    async postFood(foodObject) {
         try {
             const food = await axios.post('/food', foodObject)
             return food.data
@@ -18,7 +18,7 @@ const teaProvider = {
             console.log(error.message)
         }
     },
-    async putFood (foodObject) {
+    async putFood(foodObject) {
         try {
             const food = await axios.put('/food', foodObject)
             return food.data
@@ -28,3 +28,5 @@ const teaProvider = {
     }
 
 }
+
+export default foodProvider
