@@ -1,4 +1,4 @@
-import  express from "express";
+import express from "express";
 import { postFoodController } from "../controllers/postFoodController.js";
 import { getFoodController } from "../controllers/getFoodController.js";
 import { putFoodController } from "../controllers/putFoodController.js";
