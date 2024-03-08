@@ -8,9 +8,6 @@ import putDessertsController from "../controllers/putDessertsController.js";
 import getDrinksController from "../controllers/getDrinksController.js";
 import postDrinkController from "../controllers/postDrinkController.js";
 import putDrinkController from "../controllers/putDrinkController.js";
-import getTeaFoodController from "../controllers/getTeaFoodController.js";
-import postTeaFoodController from "../controllers/postTeaFoodController.js";
-import putTeaFoodController from "../controllers/putTeaFoodController.js";
 import getUserAdminController from "../controllers/getUserAdminController.js";
 import postUserAdminController from "../controllers/postUserAdminController.js";
 
@@ -27,10 +24,6 @@ router.put('/desserts', putDessertsController)
 router.get('/drinks', getDrinksController)
 router.post('/drinks', postDrinkController)
 router.put('/drinks', putDrinkController)
-
-router.get('/midafterfood', getTeaFoodController)
-router.post('/midafterfood', postTeaFoodController)
-router.put('/midafterfood', putTeaFoodController)
 
 router.get('/puseradminm', getUserAdminController)
 router.post('/puseradminm', postUserAdminController)
