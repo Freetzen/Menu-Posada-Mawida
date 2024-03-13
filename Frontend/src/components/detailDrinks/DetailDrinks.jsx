@@ -1,4 +1,4 @@
-import React from 'react'
+import drinksProvider from '../../utils/drinksProvider/drinksProvider';
 
 const DetailDrinks = () => {
     const [info, setInfo] = useState({})
@@ -7,14 +7,12 @@ const DetailDrinks = () => {
 
     const getdetail = async () => {
         try {
-            /* const {data} = await provider.detail()
+            const data = await drinksProvider.getDrinkById(id)
             if(data){
               return setInfo(data)
             }else{
               alert('No se encontro el producto')
             }
-
-            */
         }catch{
             console.log(error.message);
         }
