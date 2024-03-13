@@ -1,4 +1,4 @@
-import React from 'react'
+import foodProvider from '../../utils/foodProvider/foodProvider';
 
 const DetailFood = () => {
     const [info, setInfo] = useState({})
@@ -7,14 +7,12 @@ const DetailFood = () => {
 
     const getdetail = async () => {
         try {
-            /* const {data} = await provider.detail()
+          const data = await foodProvider.getFoodById(id)
             if(data){
               return setInfo(data)
             }else{
               alert('No se encontro el producto')
             }
-
-            */
         }catch{
             console.log(error.message);
         }

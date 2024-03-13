@@ -4,10 +4,11 @@ const foodSchema = new Schema({
   name: {
     type: String,
     required: true,
+    unique: true
   },
   accompaniment: {
     type: String,
-    required: true,
+    required: false,
   },
   price: {
     type: Number,

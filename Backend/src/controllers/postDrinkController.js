@@ -2,10 +2,11 @@ import { createDrink } from '../services/drinkServices.js';
 
 const postDrinkController = async (req, res) => {
     try {
-        const { name, price, image, category } = req.body;
+        const { name, price, image, category, description } = req.body;
         if (name && price) {
           const drink = await createDrink({
             name,
+            description,
             price,
             image,
             category

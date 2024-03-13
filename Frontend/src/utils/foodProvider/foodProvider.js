@@ -25,6 +25,22 @@ const foodProvider = {
         } catch (error) {
             console.log(error.message)
         }
+    },
+    async getFoodById(id) {
+        try {
+            const foodById = await axios.get('/food', {params: id})
+            return dessertById.data
+        } catch (error) {
+            console.log(error.message)
+        }
+    },
+    async getFoodByName(name) {
+        try {
+            const foodByName = await axios.get('/food', {params: name})
+            return dessertByName.data
+        } catch (error) {
+            console.log(error.message)
+        }
     }
 
 }
