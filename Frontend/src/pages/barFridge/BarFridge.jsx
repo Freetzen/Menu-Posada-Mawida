@@ -4,7 +4,7 @@ import drinksProvider from '../../utils/drinksProvider/drinksProvider'
 import DrinksCard from '../../components/drinksCard/DrinksCard'
 
 const BarFridge = () => {
-    const currentCategory = 'barfridge'
+    const currentCategory = 'frigobar'
     const [drinks, setDrinks] = useState([])
     useEffect(() => {
         const bringDrinks = async () => {

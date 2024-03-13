@@ -6,7 +6,7 @@ import MealsCard from '../../components/mealsCard/MealsCard';
 import { NavLink } from 'react-router-dom';
 
 const TeaPage = () => {
-    const currentCategory = 'tea'
+    const currentCategory = 'media tarde'
     const [drinks, setDrinks] = useState([])
     const [meals, setMeals] = useState([])
 

@@ -1,47 +1,32 @@
-import axios from "axios"
+import axios from 'axios'
 
-const dessertsProvider =  {
- 
+const dessertsProvider = {
+
     async getDesserts() {
         try {
-            const desserts = await axios.get('/desserts')
-            return desserts.data
+            const response = await axios.get('/desserts')
+            return response.data
         } catch (error) {
             console.log(error.message)
         }
     },
-    async postDesserts(dessertObject) {
+    async postDesserts(object) {
         try {
-            const createDesserts = await axios.post('/desserts', dessertObject)
-            return createDesserts.data
+            const response = await axios.post('/desserts', object)
+            return response.data
         } catch (error) {
             console.log(error.message)
         }
     },
-    async putDesserts(dessertObject) {
+    async putDesserts(object) {
         try {
-            const updateDesserts = await axios.put('/desserts', dessertObject)
-            return updateDesserts.data
-        } catch (error) {
-            console.log(error.message)
-        }
-    },
-    async getDessertsById(id) {
-        try {
-            const dessertById = await axios.get('/desserts', {params: id})
-            return dessertById.data
-        } catch (error) {
-            console.log(error.message)
-        }
-    },
-    async getDessertsByName(name) {
-        try {
-            const dessertByName = await axios.get('/desserts', {params: name})
-            return dessertByName.data
+            const response = await axios.put('/desserts', object)
+            return response.data
         } catch (error) {
             console.log(error.message)
         }
     }
+
 }
 
 export default dessertsProvider
