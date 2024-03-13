@@ -7,14 +7,24 @@ const Home = () => {
             <div>
                 <h2>Main Menu</h2>
                 <NavLink to='/lunchdinner'>
-                    <button>Lunch/Dinner</button>
+                    <button>ALMUERZO / CENA</button>
                 </NavLink>
                 <NavLink to='/barfridge'>
-                    <button>Bar Fridge</button>
+                    <button>FRIGOBAR</button>
                 </NavLink>
                 <NavLink to='/tea'>
-                    <button>Tea</button>
+                    <button>MEDIA TARDE</button>
                 </NavLink>
+                <div>
+                    <div>
+                        <h3>DESAYUNOS</h3>
+                        <p>Desayuno continental $5500</p>
+                    </div>
+                    <div>
+                        <h3>VINOS</h3>
+                        <p>Para adquirir un vino, por favor consultar con recepcionista.</p>
+                    </div>
+                </div>
             </div>
         </div>
     )
