@@ -34,7 +34,7 @@ const AdminWindow = () => {
                                 accompaniment={item.accompaniment}
                             />
                         ))
-                        : categoryToEdit === 'desserts'
+                        : categoryToEdit === 'dessert'
                             ? itemstoEdit.map(item => (
                                 <MealsCard
                                     key={item._id}
