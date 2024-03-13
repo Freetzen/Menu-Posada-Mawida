@@ -2,10 +2,11 @@ import { updateDrink } from "../services/drinkServices.js"
 
 const putDrinkController = async (req, res) => {
     try {
-        const {id, name, price, image, category} = req.body
+        const {id, name, price, image, category, description} = req.body
         if(id){
             const drink = await updateDrink(id, {
                 name,
+                description,
                 price,
                 image,
                 category

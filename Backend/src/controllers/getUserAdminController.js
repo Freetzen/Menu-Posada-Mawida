@@ -4,7 +4,6 @@ import { validatePassword } from "../utils/bcrypt.js";
 const getUserAdminController = async (req, res) => {
   try {
     const { email, password } = req.query;
-    console.log(req.query);
 
     if (email && password) {
       const userDB = await findUserByEmail(email);

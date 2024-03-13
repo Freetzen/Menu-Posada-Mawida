@@ -3,7 +3,7 @@ import { createFood } from "../services/foodServices.js";
 export const postFoodController = async (req, res) => {
     try {
         const {name, accompaniment, price, image} = req.body
-        if(name && accompaniment && price){
+        if(name && price){
             const food = await createFood({
                 name,
                 accompaniment,
