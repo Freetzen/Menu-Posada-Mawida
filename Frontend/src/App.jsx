@@ -17,15 +17,15 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={ <Home/> } />
-        <Route path='/backofficepm' element={ <Login/> } />
-        <Route path='/backofficepmadmin' element={ <Admin/>  } />
-        <Route path='/lunchdinner' element={ <LunchDinner/> } />
-        <Route path='/barfridge' element={ <BarFridge/> } />
-        <Route path='/tea' element={  <TeaPage/>  } />
-        <Route path='/mealdetail/:id' element={ <DetailFood/> } />
-        <Route path='/drinkdetail/:id' element={  <DetailDrinks/> } />
-        <Route path='/dessertdetail/:id' element={  <DetailDesserts/> } />
+        <Route path='/' element={<Home />} />
+        <Route path='/backofficepm' element={<Login />} />
+        <Route path='/backofficepmadmin' element={<Admin />} />
+        <Route path='/lunchdinner' element={<LunchDinner />} />
+        <Route path='/barfridge' element={<BarFridge />} />
+        <Route path='/tea' element={<TeaPage />} />
+        <Route path='/mealdetail/:id' element={<DetailFood />} />
+        <Route path='/drinkdetail/:id' element={<DetailDrinks />} />
+        <Route path='/dessertdetail/:id' element={<DetailDesserts />} />
       </Routes>
     </>
   )
