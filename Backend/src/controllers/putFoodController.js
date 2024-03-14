@@ -2,8 +2,8 @@ import { updateFood } from "../services/foodServices.js"
 
 export const putFoodController = async (req, res) => {
     try {
-        const {name, accompaniment, price, category} = req.body
-      const food = await updateFood({
+        const {name, accompaniment, price, category, id} = req.body
+      const food = await updateFood(id, {
         name,
         accompaniment,
         price,

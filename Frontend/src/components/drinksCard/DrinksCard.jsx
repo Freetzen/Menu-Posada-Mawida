@@ -8,6 +8,7 @@ const DrinksCard = (props) => {
                 <div>
                     <p>{props.name}</p>
                     <img src={props.image} />
+                    <p>{props.description}</p>
                     <p>$ {props.price}</p>
                 </div>
             </NavLink>

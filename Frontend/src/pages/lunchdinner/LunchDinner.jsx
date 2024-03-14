@@ -4,6 +4,7 @@ import drinksProvider from '../../utils/drinksProvider/drinksProvider'
 import { NavLink } from 'react-router-dom'
 import MealsCard from '../../components/mealsCard/MealsCard'
 import DrinksCard from '../../components/drinksCard/DrinksCard'
+import NavBar from '../../components/navBar/NavBar'
 
 const LunchDinner = () => {
     const currentCategory = 'almuerzo'
@@ -36,17 +37,7 @@ const LunchDinner = () => {
     }, [])
     return (
         <>
-            <div>
-                <NavLink to='/'>
-                    <button>Back to Menu</button>
-                </NavLink>
-                <NavLink to='/tea'>
-                    <button>Tea</button>
-                </NavLink>
-                <NavLink to='/barfridge'>
-                    <button>Bar Fridge</button>
-                </NavLink>
-            </div>
+            <NavBar/>
             <div>
                 <div>
                     <h2>Meals</h2>
@@ -77,17 +68,7 @@ const LunchDinner = () => {
                     }
                 </div>
             </div>
-            <div>
-                <NavLink to='/'>
-                    <button>Back to Menu</button>
-                </NavLink>
-                <NavLink to='/tea'>
-                    <button>Tea</button>
-                </NavLink>
-                <NavLink to='/barfridge'>
-                    <button>Bar Fridge</button>
-                </NavLink>
-            </div>
+            <NavBar/>
 
 
         </>

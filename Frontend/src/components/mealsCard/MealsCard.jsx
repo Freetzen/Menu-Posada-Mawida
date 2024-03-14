@@ -6,8 +6,8 @@ const MealsCard = (props) => {
         <div>
             <NavLink to={`/mealdetail/${props.id}`}>
                 <p>{props.name}</p>
-                <p>$ {props.price}</p>
                 <p>{props.accompaniment ? props.accompaniment : ''}</p>
+                <p>$ {props.price}</p>
             </NavLink>
         </div>
     )
