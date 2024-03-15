@@ -1,45 +1,92 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import drinksProvider from '../../../utils/drinksProvider/drinksProvider';
+import foodProvider from '../../../utils/foodProvider/foodProvider';
+import dessertsProvider from '../../../utils/dessertsProvider/dessertsProvider';
+import Swal from 'sweetalert2'
 
-const DetailAdmin = ({ setDetailState, detailState }) => {
+const DetailAdmin = ({ setDetailState, detailState, categoryToEdit, setItemstoEdit }) => {
     const [product, setProduct] = useState({
+        id: detailState.id,
         name: detailState.name,
         accompaniment: detailState.accompaniment,
         category: detailState.category,
         description: detailState.description,
-        id: detailState.id,
         price: detailState.price,
         stock: detailState.stock
     })
-    const initArray = ['frigobar', 'media tarde', 'almuerzo', 'desayuno']
-    const [currentArray, setCurrentArray] = useState([])
+    const [currentArray, setCurrentArray] = useState(['frigobar', 'media tarde', 'almuerzo', 'desayuno'])
 
-    const selectOptions = () => {
-        const filteredOptions = detailState.category.forEach(element => {
-            initArray.filter(item => item !== element)
-        });
+    const selectCategoryOptions = () => {
+        const updatedArray = currentArray.filter(item => !product.category.includes(item));
+        setCurrentArray(updatedArray);
     }
+    const handleCategoriesChange = (e) => {
+        const { value } = e.target
+        setProduct({
+            ...product,
+            category: [...product.category, value]
+        })
+    }
+
+    useEffect(() => {
+        selectCategoryOptions()
+    }, [product.category])
+
+
     const handleXClick = (e) => {
         const { value } = e.target
-        console.log('este es value----------', value);
-        const result = detailState.category.filter(item => item !== value)
+        const result = product.category.filter(item => item !== value)
         setProduct({
             ...product,
             category: result
         })
+        setCurrentArray([...currentArray, value])
     }
+
     const handleCancelClick = () => {
         setDetailState({})
     }
-    const handleSaveClick = () => {
 
+    const handleSaveClick = async () => {
+        try {
+            if (categoryToEdit === 'drinks') {
+                await drinksProvider.putDrinks(product);
+                const drinks = await drinksProvider.getDrinks()
+                setItemstoEdit(drinks)
+            }
+            if (categoryToEdit === 'food') {
+                await foodProvider.putFood(product);
+                const meals = await foodProvider.getFood()
+                setItemstoEdit(meals)
+            }
+            if (categoryToEdit === 'dessert') {
+                await dessertsProvider.putDesserts(product);
+                const desserts = await dessertsProvider.getDesserts()
+                setItemstoEdit(desserts)
+            }
+        } catch (error) {
+            console.log(error.message)
+        }
+
+        Swal.fire({
+            icon: "success",
+            title: "El producto ha sido editado",
+            showConfirmButton: false,
+            timer: 1500,
+            customClass: {
+                popup: 'center',
+            }
+        });
+
+        setDetailState({})
     }
+
     const handleChange = (e) => {
         setProduct({
             ...product,
             [e.target.name]: e.target.value
         })
     }
-    console.log('this is product in detail', product);
     return (
         <div>
             <label>Nombre: </label>
@@ -75,19 +122,19 @@ const DetailAdmin = ({ setDetailState, detailState }) => {
             <label>Categorias: </label>
             <select
                 name="category"
-                onChange={handleChange}
-            // value={product.category}
+                onChange={handleCategoriesChange}
             >
-                {initArray.map(item =>
+                <option value=""></option>
+                {currentArray.map(item =>
                     <option value={item} key={item}>{item}</option>
                 )}
             </select>
             <div>
                 {product.category.map(item =>
-                    <div key={item}>
-                        <p value={item}>{item}</p>
-                        <button onClick={handleXClick}>x</button>
-                    </div>
+                (<div key={item}>
+                    <p value={item}>{item}</p>
+                    <button value={item} onClick={handleXClick}>x</button>
+                </div>)
                 )}
             </div>
 
@@ -102,7 +149,7 @@ const DetailAdmin = ({ setDetailState, detailState }) => {
                             placeholder={product.accompaniment}
                             value={product.accompaniment}
                             cols="60"
-                            rows="10"
+                            rows="2"
                             onChange={handleChange}
                         />
                         <br />
@@ -120,15 +167,13 @@ const DetailAdmin = ({ setDetailState, detailState }) => {
                             placeholder={product.description}
                             value={product.description}
                             cols="60"
-                            rows="10"
+                            rows="2"
                             onChange={handleChange}
                         />
                         <br />
                     </div>
                     : null
             }
-
-
 
             <button onClick={handleCancelClick}>Cancelar</button>
             <button onClick={handleSaveClick}>Guardar</button>
