@@ -1,9 +1,10 @@
 import { NavLink } from "react-router-dom";
-import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import foodProvider from "../../utils/foodProvider/foodProvider";
 import { GiWineBottle } from "react-icons/gi";
 import { MdFreeBreakfast } from "react-icons/md";
+import mawidaLogo from './../../../public/img/mawida.png'
 import "./Home.css";
 
 const Home = () => {
@@ -39,9 +40,12 @@ const Home = () => {
           justifyContent={"end"}
           gap={10}
           w={"100%"}
-          h={"600px"}
+          h={"700px"}
           pb={"50px"}
         >
+          <Flex justifyContent={'center'} alignContent={'center'}>
+            <Image src={mawidaLogo} w={'500px'} m={'0px 10px'}></Image>
+          </Flex>
           <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
             <Text
               as={"h2"}
@@ -62,7 +66,7 @@ const Home = () => {
             m={"0px 10px"}
           >
             <NavLink to="/lunchdinner">
-              <Button fontWeight={"200"}>Almuerzo | Cena</Button>
+              <Button fontWeight={"200"} >Almuerzo | Cena</Button>
             </NavLink>
             <NavLink to="/barfridge">
               <Button fontWeight={"200"}>Frigobar</Button>
@@ -79,8 +83,7 @@ const Home = () => {
           justifyContent={"space-evenly"}
           pt={"100px"}
           gap={20}
-          border={"1px"}
-          bg={"#232323"}
+          bg={"#412A28"}
         >
           <Flex
             direction={"column"}
@@ -88,13 +91,13 @@ const Home = () => {
             m={"0px 10px"}
             alignItems={"center"}
           >
-            <MdFreeBreakfast color={"aliceblue"} fontSize={"20px"} />
+            <MdFreeBreakfast color={"#ede0d4"} fontSize={"25px"} />
             <Text
               as={"h3"}
-              fontSize={"2xl"}
+              fontSize={"4xl"}
               textAlign={"center"}
-              fontWeight={"400"}
-              color={"aliceblue"}
+              fontWeight={"500"}
+              color={"#ede0d4"}
               pb={"10px"}
             >
               Desayuno
@@ -104,9 +107,9 @@ const Home = () => {
               fontSize={"xl"}
               textAlign={"center"}
               fontWeight={"200"}
-              color={"rgb(139, 139, 139)"}
+              color={"#ede0d4"}
             >
-              Desayuno continental ${breakfast.price}
+              Desayuno continental <br/> ${breakfast.price}
             </Text>
           </Flex>
           <Flex
@@ -115,13 +118,13 @@ const Home = () => {
             m={"0px 10px"}
             alignItems={"center"}
           >
-            <GiWineBottle color={"aliceblue"} fontSize={"25px"} />
+            <GiWineBottle color={"#ede0d4"} fontSize={"25px"} />
             <Text
               as={"h3"}
-              fontSize={"2xl"}
+              fontSize={"4xl"}
               textAlign={"center"}
-              fontWeight={"400"}
-              color={"aliceblue"}
+              fontWeight={"500"}
+              color={"#ede0d4"}
               pb={"10px"}
             >
               Vinos
@@ -130,10 +133,10 @@ const Home = () => {
               as={"p"}
               fontSize={"xl"}
               textAlign={"center"}
-              fontWeight={"200"}
-              color={"rgb(139, 139, 139)"}
+              fontWeight={"300"}
+              color={"#ede0d4"}
             >
-              Para adquirir un vino, por favor consultar con recepción.
+              Para adquirir un vino, por favor <br/> consultar con recepción.
             </Text>
           </Flex>
         </Flex>
