@@ -46,20 +46,19 @@ const DetailAdmin = ({ setDetailState, detailState, categoryToEdit, setItemstoEd
     const handleCancelClick = () => {
         setDetailState({})
     }
-
     const handleSaveClick = async () => {
         try {
-            if (categoryToEdit === 'drinks') {
+            if (detailState.productype === 'drinks') {
                 await drinksProvider.putDrinks(product);
                 const drinks = await drinksProvider.getDrinks()
                 setItemstoEdit(drinks)
             }
-            if (categoryToEdit === 'food') {
+            if (detailState.productype === 'food') {
                 await foodProvider.putFood(product);
                 const meals = await foodProvider.getFood()
                 setItemstoEdit(meals)
             }
-            if (categoryToEdit === 'dessert') {
+            if (detailState.productype === 'dessert') {
                 await dessertsProvider.putDesserts(product);
                 const desserts = await dessertsProvider.getDesserts()
                 setItemstoEdit(desserts)

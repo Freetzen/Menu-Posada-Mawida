@@ -8,9 +8,13 @@ const SearchBarAdmin = ({ setCategoryToEdit, setItemstoEdit, setDetailState, ite
 
     const [searchValue, setSearchValue] = useState('')
 
-    const getAllproducts = () => {
+    const getAllproducts = async () => {
         setDetailState({})
-        setItemstoEdit(allProducts)
+        const drinks = await drinksProvider.getDrinks()
+        const meals = await foodProvider.getFood()
+        const desserts = await dessertsProvider.getDesserts()
+        setItemstoEdit(drinks.concat(meals, desserts))
+        setCategoryToEdit('All')
     }
     const getDrinks = async () => {
         setDetailState({})
