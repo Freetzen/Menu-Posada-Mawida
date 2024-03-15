@@ -23,7 +23,6 @@ const AdminWindow = () => {
     useEffect(() => {
         bringAllData()
     }, [])
-
     return (
         <div>
             <SearchBarAdmin allProducts={allProducts} setCategoryToEdit={setCategoryToEdit} setItemstoEdit={setItemstoEdit} setDetailState={setDetailState} itemstoEdit={itemstoEdit} />
@@ -49,6 +48,7 @@ const AdminWindow = () => {
                                             name={item.name}
                                             price={item.price}
                                             stock={item.stock}
+                                            productype={item.productype}
                                             category={item.category}
                                             accompaniment={item.accompaniment ? item.accompaniment : ''}
                                             description={item.description ? item.description : ''}

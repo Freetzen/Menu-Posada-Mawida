@@ -14,9 +14,14 @@ const drinksSchema = new Schema({
     type: String,
     required: false
   },
-  image:{
+  image: {
     type: String,
     required: false,
+  },
+  productype: {
+    type: String,
+    required: false,
+    default: 'drinks',
   },
   stock: {
     type: Boolean,
