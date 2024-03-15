@@ -1,25 +1,37 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import SearchBarAdmin from '../../components/adminUtils/SearchBarAdmin/SearchBarAdmin'
 import AdminCard from '../../components/adminUtils/adminCard/AdminCard'
 import DetailAdmin from '../../components/adminUtils/detailAdmin/DetailAdmin'
 import CreateProduct from '../../components/adminUtils/crateProduct/CreateProduct'
+import drinksProvider from '../../utils/drinksProvider/drinksProvider'
+import foodProvider from '../../utils/foodProvider/foodProvider'
+import dessertsProvider from '../../utils/dessertsProvider/dessertsProvider'
 
 const AdminWindow = () => {
-    const [categoryToEdit, setCategoryToEdit] = useState('')
+    const [categoryToEdit, setCategoryToEdit] = useState('All')
     const [itemstoEdit, setItemstoEdit] = useState([])
+    const [allProducts, setAllProducts] = useState([])
     const [detailState, setDetailState] = useState({})
 
-    console.log('items', itemstoEdit);
-    console.log('categorias', categoryToEdit);
-    console.log('detail', detailState);
+    const bringAllData = async () => {
+        const drinks = await drinksProvider.getDrinks()
+        const meals = await foodProvider.getFood()
+        const desserts = await dessertsProvider.getDesserts()
+        setItemstoEdit(drinks.concat(meals, desserts))
+        setAllProducts(drinks.concat(meals, desserts))
+    }
+    useEffect(() => {
+        bringAllData()
+    }, [])
+
     return (
         <div>
-            <SearchBarAdmin setCategoryToEdit={setCategoryToEdit} setItemstoEdit={setItemstoEdit} setDetailState={setDetailState} />
+            <SearchBarAdmin allProducts={allProducts} setCategoryToEdit={setCategoryToEdit} setItemstoEdit={setItemstoEdit} setDetailState={setDetailState} itemstoEdit={itemstoEdit} />
             <div>
                 {
                     detailState.name
                         ?
-                        <DetailAdmin detailState={detailState} categoryToEdit={categoryToEdit} setDetailState={setDetailState} />
+                        <DetailAdmin detailState={detailState} categoryToEdit={categoryToEdit} setDetailState={setDetailState} setItemstoEdit={setItemstoEdit} />
                         : categoryToEdit !== ''
                             ?
                             <div>
