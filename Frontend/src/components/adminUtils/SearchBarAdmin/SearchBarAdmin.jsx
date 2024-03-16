@@ -76,6 +76,10 @@ const SearchBarAdmin = ({ setCategoryToEdit, setItemstoEdit, setDetailState, ite
         }
     }
 
+    const handlePost = () => {
+        setDetailState('create')
+    }
+
     return (
         <div>
             <input
@@ -91,7 +95,7 @@ const SearchBarAdmin = ({ setCategoryToEdit, setItemstoEdit, setDetailState, ite
             <button onClick={getDrinks}>Bebidas</button>
             <button onClick={getMeals}>Comidas</button>
             <button onClick={getDesserts}>Postres</button>
-            <button >Crear</button>
+            <button onClick={handlePost}>Crear</button>
 
         </div>
     )

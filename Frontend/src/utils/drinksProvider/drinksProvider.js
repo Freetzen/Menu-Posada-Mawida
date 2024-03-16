@@ -28,7 +28,10 @@ const drinksProvider = {
     },
     async getDrinkById(id) {
         try {
-            const drinkById = await axios.get('/drinks', {params: id})
+            const obj = {
+                id: id
+            }
+            const drinkById = await axios.get('/drinks/id', {params: obj})
             return drinkById.data
         } catch (error) {
             console.log(error.message)
@@ -36,8 +39,8 @@ const drinksProvider = {
     },
     async getDrinkByName(name) {
         try {
-            const drinkByName = await axios.get('/drinks', {params: name})
-            return drinkById.data
+            const drinkByName = await axios.get('/drinks/name', {params: name})
+            return drinkByName.data
         } catch (error) {
             console.log(error.message)
         }
