@@ -1,3 +1,5 @@
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import dessertsProvider from '../../utils/dessertsProvider/dessertsProvider';
 
 const DetailDesserts = () => {
