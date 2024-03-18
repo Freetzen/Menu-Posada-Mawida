@@ -8,9 +8,13 @@ const SearchBarAdmin = ({ setCategoryToEdit, setItemstoEdit, setDetailState, ite
 
     const [searchValue, setSearchValue] = useState('')
 
-    const getAllproducts = () => {
+    const getAllproducts = async () => {
         setDetailState({})
-        setItemstoEdit(allProducts)
+        const drinks = await drinksProvider.getDrinks()
+        const meals = await foodProvider.getFood()
+        const desserts = await dessertsProvider.getDesserts()
+        setItemstoEdit(drinks.concat(meals, desserts))
+        setCategoryToEdit('All')
     }
     const getDrinks = async () => {
         setDetailState({})
@@ -72,6 +76,10 @@ const SearchBarAdmin = ({ setCategoryToEdit, setItemstoEdit, setDetailState, ite
         }
     }
 
+    const handlePost = () => {
+        setDetailState('create')
+    }
+
     return (
         <div>
             <input
@@ -87,7 +95,7 @@ const SearchBarAdmin = ({ setCategoryToEdit, setItemstoEdit, setDetailState, ite
             <button onClick={getDrinks}>Bebidas</button>
             <button onClick={getMeals}>Comidas</button>
             <button onClick={getDesserts}>Postres</button>
-            <button >Crear</button>
+            <button onClick={handlePost}>Crear</button>
 
         </div>
     )

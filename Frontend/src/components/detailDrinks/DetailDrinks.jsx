@@ -1,4 +1,6 @@
+import { useParams } from 'react-router-dom';
 import drinksProvider from '../../utils/drinksProvider/drinksProvider';
+import { useEffect, useState } from 'react';
 
 const DetailDrinks = () => {
     const [info, setInfo] = useState({})

@@ -28,16 +28,19 @@ const foodProvider = {
     },
     async getFoodById(id) {
         try {
-            const foodById = await axios.get('/food', {params: id})
-            return dessertById.data
+            const obj = {
+                id: id
+            }
+            const foodById = await axios.get('/food/id', {params: obj})
+            return foodById.data
         } catch (error) {
             console.log(error.message)
         }
     },
     async getFoodByName(name) {
         try {
-            const foodByName = await axios.get('/food', {params: name})
-            return dessertByName.data
+            const foodByName = await axios.get('/food/name', {params: name})
+            return foodByName.data
         } catch (error) {
             console.log(error.message)
         }

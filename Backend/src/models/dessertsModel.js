@@ -10,9 +10,14 @@ const dessertsSchema = new Schema({
     type: Number,
     required: true,
   },
-  image:{
+  image: {
     type: String,
     required: false,
+  },
+  productype: {
+    type: String,
+    required: false,
+    default: 'dessert',
   },
   stock: {
     type: Boolean,
