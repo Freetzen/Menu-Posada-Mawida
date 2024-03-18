@@ -25,7 +25,6 @@ const Home = () => {
 
     getPrice();
   }, []);
-
   return (
     <>
       <Flex
@@ -76,6 +75,7 @@ const Home = () => {
             </NavLink>
           </Box>
         </Flex>
+
         <Flex
           w={"100%"}
           h={"auto"}
@@ -112,6 +112,8 @@ const Home = () => {
               Desayuno continental <br/> ${breakfast.price}
             </Text>
           </Flex>
+
+
           <Flex
             direction={"column"}
             pb={"150px"}
@@ -139,6 +141,7 @@ const Home = () => {
               Para adquirir un vino, por favor <br/> consultar con recepción.
             </Text>
           </Flex>
+          
         </Flex>
       </Flex>
     </>

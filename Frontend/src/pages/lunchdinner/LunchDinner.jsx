@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import foodProvider from '../../utils/foodProvider/foodProvider'
 import drinksProvider from '../../utils/drinksProvider/drinksProvider'
-import { NavLink } from 'react-router-dom'
 import MealsCard from '../../components/mealsCard/MealsCard'
 import DrinksCard from '../../components/drinksCard/DrinksCard'
 import NavBar from '../../components/navBar/NavBar'
+import { Box, Flex, Text } from '@chakra-ui/react'
 import dessertsProvider from '../../utils/dessertsProvider/dessertsProvider'
 import DessertsCard from '../../components/dessertsCard/DessertsCard'
 
@@ -39,11 +39,11 @@ const LunchDinner = () => {
         bringDesserts()
     }, [])
     return (
-        <>
+        <Flex flexDirection={'column'} justifyContent={'center'} alignItems={'center'} h={'auto'} p={'100px 0px'}>
             <NavBar/>
-            <div>
-                <div>
-                    <h2>Almuerzo / Cena</h2>
+            <Flex flexWrap={'wrap'} justifyContent={'center'} alignContent={'center'} gap={20} p={'20px 30px'} w={'100%'} h={'auto'}>
+                <Box w={'auto'} p={'30px'} display={'flex'} flexDirection={'column'} gap={10}>
+                    <Text as={'h2'} fontSize={'2xl'} textAlign={'center'}>Almuerzo / Cena</Text>
                     {
                         meals.map(item => (
                             <MealsCard
@@ -55,9 +55,9 @@ const LunchDinner = () => {
                             />
                         ))
                     }
-                </div>
-                <div>
-                    <h2>Postres</h2>
+                </Box>
+                <Box w={'auto'} p={'30px 100px'} display={'flex'} flexDirection={'column'} gap={10}>
+                    <Text as={'h2'} fontSize={'2xl'} textAlign={'center'}>Postres</Text>
                     {
                         desserts.map(item => (
                             <DessertsCard
@@ -69,9 +69,10 @@ const LunchDinner = () => {
                             />
                         ))
                     }
-                </div>
-                <div>
-                    <h2>Bebidas</h2>
+                </Box>
+
+                <Box w={'auto'} p={'30px 100px'} display={'flex'} flexDirection={'column'} gap={10}>
+                    <Text as={'h2'} fontSize={'2xl'} textAlign={'center'}>Bebidas</Text>
                     {
                         drinks.map(item => (
                             <DrinksCard
@@ -83,13 +84,12 @@ const LunchDinner = () => {
                             />
                         ))
                     }
-                </div>
-            </div>
+                </Box>
+            </Flex>
             <NavBar/>
-
-
-        </>
-    )
-}
+        </Flex> 
+        
+        )
+    }
 
 export default LunchDinner

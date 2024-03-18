@@ -1,18 +1,16 @@
-import React from 'react'
+import { Box, Image, Text } from '@chakra-ui/react'
 import { NavLink } from 'react-router-dom'
 
 const DrinksCard = (props) => {
     return (
-        <div>
+        <Box  display={'flex'} flexDirection={'column'} textAlign={'center'}>
             <NavLink to={`/drinkdetail/${props.id}`}>
-                <div>
-                    <p>{props.name}</p>
-                    <img src={props.image} />
-                    <p>{props.description}</p>
-                    <p>$ {props.price}</p>
-                </div>
+                    <Text>{props.name}</Text>
+                    <Image src={props.image} />
+                    <Text>{props.description}</Text>
+                    <Text>$ {props.price}</Text>
             </NavLink>
-        </div>
+        </Box>
     )
 }
 
