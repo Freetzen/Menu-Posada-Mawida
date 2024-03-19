@@ -15,7 +15,7 @@ const Home = () => {
       try {
         const priceBreakfast = await foodProvider.getFood();
         const filterBreakfast = priceBreakfast.filter((e) =>
-          e.category.includes("desayuno")
+          e.category.includes("breakfast")
         );
         setBreakfast(filterBreakfast[0]);
       } catch (error) {

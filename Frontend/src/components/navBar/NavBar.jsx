@@ -1,21 +1,22 @@
+import { Box, Button } from '@chakra-ui/react';
 import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
   return (
-    <div>
+    <Box w={'100%'} display={'flex'} flexWrap={'wrap'} justifyContent={'center'} gap={5} m={'50px 20px'}>
       <NavLink to="/">
-        <button>VOLVER AL MENÚ</button>
+        <Button fontWeight={"200"}>Volver al Menu</Button>
       </NavLink>
       <NavLink to="/lunchdinner">
-        <button>ALMUERZO / CENA</button>
+        <Button fontWeight={"200"}>Almuerzo / Cena</Button>
       </NavLink>
       <NavLink to="/tea">
-        <button>MEDIA TARDE</button>
+        <Button fontWeight={"200"}>Media Tarde</Button>
       </NavLink>
       <NavLink to="/barfridge">
-        <button>FRIGOBAR</button>
+        <Button fontWeight={"200"}>Frigobar</Button>
       </NavLink>
-    </div>
+    </Box>
   );
 }
 
