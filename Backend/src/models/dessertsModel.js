@@ -4,14 +4,24 @@ const dessertsSchema = new Schema({
   name: {
     type: String,
     required: true,
+    unique: true
   },
   price: {
     type: Number,
     required: true,
   },
-  image:{
+  image: {
     type: String,
     required: false,
+  },
+  productype: {
+    type: String,
+    required: false,
+    default: 'dessert',
+  },
+  stock: {
+    type: Boolean,
+    default: true
   },
   category: {
     type: Array,

@@ -4,14 +4,28 @@ const drinksSchema = new Schema({
   name: {
     type: String,
     required: true,
+    unique: true
   },
   price: {
     type: Number,
     required: true
   },
-  image:{
+  description: {
+    type: String,
+    required: false
+  },
+  image: {
     type: String,
     required: false,
+  },
+  productype: {
+    type: String,
+    required: false,
+    default: 'drinks',
+  },
+  stock: {
+    type: Boolean,
+    default: true
   },
   category: {
     type: Array,
