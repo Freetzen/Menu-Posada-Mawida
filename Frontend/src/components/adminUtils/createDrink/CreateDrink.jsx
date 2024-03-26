@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import drinksProvider from "../../../utils/drinksProvider/drinksProvider";
+import { Box, Button, Flex, FormControl, FormLabel, Input, Select, Text } from "@chakra-ui/react";
 
 const CreateDrink = () => {
   const [currentArray, setCurrentArray] = useState([
@@ -98,21 +99,26 @@ const CreateDrink = () => {
   }, [product.category]);
 
   return (
-    <div>
-      <h2>Crear Comida</h2>
+    <Box display={'flex'} justifyContent={'center'} alignItems={'center'} h={'auto'} p={'50px 0px'} w={'100%'}>
 
-      <form onSubmit={handleSubmit}>
-        <label>* Nombre: </label>
-        <input
+      <FormControl as="form" nSubmit={handleSubmit} display={'flex'} flexDirection={'column'} justifyContent={'center'} gap={5} borderRadius={'30px'}
+         alignItems={'center'} h={'auto'} w={{base:'90%', sm:'90%', md:'90%', lg:'60%', xl:'40%'}} bg={'#A98467'} p={'30px 30px'} onSubmit={handleSubmit}>
+        <Flex py={'30px'}>
+          <Text textAlign={'center'} as={'h2'} fontSize={'3xl'} >Crear Bebida</Text>
+        </Flex>
+        <FormLabel color={'white'} fontSize={'xl'}>Nombre: </FormLabel>
+        <Input
+          bg={'white'}
           type="text"
           name="name"
           value={product.name}
           onChange={handleChange}
-          placeholder="Nombre del postre"
+          placeholder="Nombre de la Bebida"
         />
 
-        <label>Descripción: </label>
-        <input
+        <FormLabel color={'white'} fontSize={'xl'}>Descripción: </FormLabel>
+        <Input
+          bg={'white'}
           type="text"
           name="description"
           value={product.description}
@@ -120,8 +126,9 @@ const CreateDrink = () => {
           placeholder="Descripción"
         />
 
-        <label>Precio: </label>
-        <input
+        <FormLabel color={'white'} fontSize={'xl'}>Precio: </FormLabel>
+        <Input
+          bg={'white'}
           type="number"
           name="price"
           value={product.price}
@@ -129,32 +136,31 @@ const CreateDrink = () => {
           placeholder="Ejemplo: 4500"
         />
 
-        <label>Categorias: </label>
-        <select name="category" onChange={handleCategoriesChange}>
-          <option value=""></option>
+        <FormLabel color={'white'} fontSize={'xl'}>Categorias: </FormLabel>
+        <Select name="category" onChange={handleCategoriesChange} bg={'white'}>
+          <option value="">Seleccione una categoria</option>
           {currentArray.map((item) => (
             <option value={item} key={item}>
               {item}
             </option>
           ))}
-        </select>
-        <div>
+        </Select>
+        <Box w={'100%'} h={{base:'auto' , xl:'50px'}} display={'flex'} flexDirection={'row'} flexWrap={'wrap'} justifyContent={'space-evenly'} alignItems={'center'} gap={3}>
           {product.category.map((item) => (
-            <div key={item}>
-              <p value={item}>{item}</p>
-              <button value={item} onClick={handleXClick}>
-                x
-              </button>
-            </div>
+            <Flex key={item} w={'auto'}>
+              <Button _hover={'none'} bg={'#412a28'} color={'white'} value={item} onClick={handleXClick}>
+              {item} x
+              </Button>
+            </Flex>
           ))}
-        </div>
+        </Box>
 
-        <label htmlFor="">Imagen</label>
-        <input type="text" />
+        <FormLabel htmlFor="" color={'white'} fontSize={'xl'}>Imagen</FormLabel>
+        <Input type="text" bg={'white'}/>
 
-        <button type="submit">Crear</button>
-      </form>
-    </div>
+        <Button bg={'#412a28'} color={'white'} type='nsubmit'>Crear</Button>
+      </FormControl>
+    </Box>
   );
 };
 

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import CreateFood from '../createFood/CreateFood'
 import CreateDrink from '../createDrink/CreateDrink'
 import CreateDessert from '../createDessert/CreateDessert'
+import { Box, Button, Flex, Text } from '@chakra-ui/react'
 
 const ButtonCreate = () => {
 
@@ -13,22 +14,24 @@ const handleClick = (e) => {
 }
 
   return (
-    <div>
-      <h2>¿Que desea crear?</h2>
+    <Box h={'auto'}>
+      <Flex py={'50px'} justifyContent={'center'}>
+        <Text as={'h2'} fontSize={'5xl'} fontWeight={500} color={'#412A28'} textAlign={'center'}>¿Que desea crear?</Text>
+      </Flex>
 
-      <div>
-        <button name="comida" onClick={handleClick}>
+      <Flex py={'30px'} justifyContent={'center'} gap={5}>
+        <Button name="comida" onClick={handleClick} bg={'#412A28'} color={'white'} _hover={'none'}>
           Comida
-        </button>
-        <button name="bebida" onClick={handleClick}>
+        </Button>
+        <Button name="bebida" onClick={handleClick} bg={'#412A28'} color={'white'} _hover={'none'}>
           Bebida
-        </button>
-        <button name="postre" onClick={handleClick}>
+        </Button>
+        <Button name="postre" onClick={handleClick} bg={'#412A28'} color={'white'} _hover={'none'}>
           Postre
-        </button>
-      </div>
+        </Button>
+      </Flex>
 
-      <div>
+      <Flex>
         {selectOption === "comida" ? (
           <CreateFood />
         ) : selectOption === "bebida" ? (
@@ -36,8 +39,8 @@ const handleClick = (e) => {
         ) : selectOption === "postre" ? (
           <CreateDessert />
         ) : null}
-      </div>
-    </div>
+      </Flex>
+    </Box>
   );
 }
 

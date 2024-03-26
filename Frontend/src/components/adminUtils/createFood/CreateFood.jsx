@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import foodProvider from '../../../utils/foodProvider/foodProvider';
 import Swal from 'sweetalert2';
+import { Box, Button, Flex, FormControl, FormLabel, Input, Select, Text } from '@chakra-ui/react';
 
 const CreateFood = () => {
 
@@ -93,13 +94,15 @@ const CreateFood = () => {
 }, [product.category])
 
   return (
-    <div>
-
-      <h2>Crear Comida</h2>
-
-      <form onSubmit={handleSubmit}>
-        <label>Nombre: </label>
-        <input 
+    <Box display={'flex'} justifyContent={'center'} alignItems={'center'} h={'auto'} p={'50px 0px'} w={'100%'}>
+      <FormControl as="form" onSubmit={handleSubmit} display={'flex'} flexDirection={'column'} justifyContent={'center'} gap={5} borderRadius={'30px'}
+         alignItems={'center'} h={'auto'} w={{base:'90%', sm:'90%', md:'90%', lg:'60%', xl:'40%'}} bg={'#A98467'} p={'30px 30px'}>
+          <Flex py={'30px'}>
+              <Text textAlign={'center'} as={'h2'} fontSize={'3xl'}>Crear Comida</Text>
+          </Flex>
+        <FormLabel color={'white'} fontSize={'xl'}>Nombre</FormLabel>
+        <Input 
+        bg={'white'}
         type="text" 
         name='name'
         value={product.name}
@@ -107,8 +110,9 @@ const CreateFood = () => {
         placeholder='Nombre de la comida'
         />
 
-        <label>Acompañamiento: </label>
-        <input 
+        <FormLabel color={'white'} fontSize={'xl'}>Acompañamiento: </FormLabel>
+        <Input 
+        bg={'white'}
         type="text" 
         name='accompaniment'
         value={product.accompaniment}
@@ -116,8 +120,9 @@ const CreateFood = () => {
         placeholder='Acompañamiento'
         />
 
-        <label>Precio: </label>
-        <input 
+        <FormLabel color={'white'} fontSize={'xl'}>Precio: </FormLabel>
+        <Input 
+        bg={'white'}
         type="number" 
         name='price'
         value={product.price}
@@ -125,33 +130,33 @@ const CreateFood = () => {
         placeholder='Ejemplo: 4500'
         />
 
-        <label>Categorias: </label>
-            <select
+        <FormLabel color={'white'} fontSize={'xl'}>Categorias: </FormLabel>
+            <Select
+                bg={'white'}
                 name="category"
                 onChange={handleCategoriesChange}
             >
-                <option value=""></option>
+                <option value="">Seleccione una categoria</option>
                 {currentArray.map(item =>
                     <option value={item} key={item}>{item}</option>
                 )}
-            </select>
-            <div>
+            </Select>
+            <Box w={'100%'} h={{base:'auto' , xl:'50px'}} display={'flex'} flexDirection={'row'} flexWrap={'wrap'} justifyContent={'space-evenly'} alignItems={'center'} gap={3}>
                 {product.category.map(item =>
-                (<div key={item}>
-                    <p value={item}>{item}</p>
-                    <button value={item} onClick={handleXClick}>x</button>
-                </div>)
+                (<Flex key={item} w={'auto'}>
+                    <Button _hover={'none'} bg={'#412a28'} color={'white'} value={item} onClick={handleXClick}>{item} x</Button>
+                </Flex>)
                 )}
-            </div>
+            </Box>
 
-        <label htmlFor="">Imagen</label>
-        <input type="text" />
+        <FormLabel htmlFor="" color={'white'} fontSize={'xl'}>Imagen</FormLabel>
+        <Input type="text" bg={'white'} />
 
-        <button type='submit'>Crear</button>
+        <Button bg={'#412a28'} color={'white'} type='submit'>Crear</Button>
 
-      </form>
+      </FormControl>
 
-    </div>
+    </Box>
   )
 }
 

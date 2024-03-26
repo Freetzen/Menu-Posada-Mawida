@@ -52,18 +52,20 @@ const LunchDinner = () => {
       justifyContent={"center"}
       alignItems={"center"}
       h={"auto"}
-      p={"100px 0px"}
+      pt={"100px"}
       bg={"#412A28"}
     >
       <Box>
         <Image src={mawidaLogo} w={"500px"}></Image>
       </Box>
-      <NavBar />
+      <Box display={'flex'} justifyContent={'center'} alignItems={'center'} w={'100%'}>
+        <NavBar />
+      </Box>
       <Flex
         flexDirection={"row"}
         flexWrap={"wrap"}
         alignContent={"center"}
-        w={"100%"}
+        w={'100%'}
         h={"auto"}
         bg={"whitesmoke"}
       >
@@ -103,16 +105,14 @@ const LunchDinner = () => {
           ))}
         </Box>
         <Box
-          w={{ base: "auto", sm: "auto", md: "auto", xl: "100%" }}
-          h={"auto"}
-          display={"flex"}
-          flexWrap={"wrap"}
-          justifyContent={"center"}
-          alignItems={"center"}
-          gap={10}
-          borderRight={"1px"}
-          borderColor={"rgb(212, 212, 212)"}
-          pb={"50px"}
+         w={"100%"}
+         h={"auto"}
+         display={"flex"}
+         flexWrap={"wrap"}
+         justifyContent={"center"}
+         alignItems={"center"}
+         gap={10}
+         pb={"50px"}
         >
           <Text
             w={"100%"}
@@ -143,9 +143,9 @@ const LunchDinner = () => {
           w={"100%"}
           display={"flex"}
           flexWrap={"wrap"}
-          justifyContent={"space-evenly"}
+          justifyContent={"center"}
           alignItems={"center"}
-          gap={3}
+          gap={10}
           pb={"50px"}
         >
           <Text
@@ -175,7 +175,9 @@ const LunchDinner = () => {
           ))}
         </Box>
       </Flex>
-      <NavBar />
+      <Box display={'flex'} justifyContent={'center'} alignItems={'center'} w={'100%'} h={'100%'} bg={'#412A28'}>
+        <NavBar />
+      </Box>
     </Flex>
   );
 };

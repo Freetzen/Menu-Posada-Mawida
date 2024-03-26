@@ -9,7 +9,7 @@ const DrinksCard = ({ id, name, description, price }) => {
 flexDirection={"column"}
 justifyContent={'center'}
 textAlign={"center"}
-w={'350px'}
+w={{base: '70%', md:'350px', lg:'350px', xl:'350px'}}
 h={'400px'}
 key={id}
 bg={'aliceblue'}
