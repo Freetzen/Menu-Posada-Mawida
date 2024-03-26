@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Swal from 'sweetalert2'
 import drinksProvider from '../../../utils/drinksProvider/drinksProvider'
 import foodProvider from '../../../utils/foodProvider/foodProvider'
 import dessertsProvider from '../../../utils/dessertsProvider/dessertsProvider'
+import { Box, Button, Flex, Image, Input, Select } from '@chakra-ui/react'
+import mawidaLogo from "./../../../../public/img/mawida.png"; 
 
 const SearchBarAdmin = ({ setCategoryToEdit, setItemstoEdit, setDetailState, itemstoEdit, allProducts }) => {
 
@@ -81,23 +83,40 @@ const SearchBarAdmin = ({ setCategoryToEdit, setItemstoEdit, setDetailState, ite
     }
 
     return (
-        <div>
-            <input
-                type="text"
-                name='search'
-                placeholder='Ingrese nombre del producto'
-                value={searchValue}
-                onChange={handleChange}
-                onKeyPress={handleKeyPress}
-            />
-            <button onClick={handleClick}>Buscar</button>
-            <button onClick={getAllproducts}>Todos</button>
-            <button onClick={getDrinks}>Bebidas</button>
-            <button onClick={getMeals}>Comidas</button>
-            <button onClick={getDesserts}>Postres</button>
-            <button onClick={handlePost}>Crear</button>
+        <Box h={'auto'} p={'50px 0px'} display={'flex'} flexDirection={'row'} flexWrap={'wrap'} justifyContent={'center'} alignItems={'center'} gap={5} bg={'#412a28'}>
+            <Flex w={'100%'} justifyContent={'center'} alignItems={'center'}><Image src={mawidaLogo} w={'300px'}></Image></Flex>
+            <Flex w={{base:'auto', xs:'auto', sm:'20%', xl:'10%'}}>
+                <Select placeholder='Select option' color={'white'} onChange={(e) => {
+                    const selectedOption = e.target.value;
+                    if (selectedOption === 'option1') getAllproducts();
+                    else if (selectedOption === 'option2') getDrinks();
+                    else if (selectedOption === 'option3') getMeals();
+                    else if (selectedOption === 'option4') getDesserts();
+                    else if (selectedOption === 'option5') handlePost();
+                }}>
+                    <option style={{color: 'black'}} value='option1'>Todos</option>
+                    <option style={{color: 'black'}}value='option2'>Bebidas</option>
+                    <option style={{color: 'black'}}value='option3'>Comidas</option>
+                    <option style={{color: 'black'}}value='option4'>Postres</option>
+                    <option style={{color: 'black'}}value='option5'>Crear</option>
+                </Select>
+            </Flex>
+            <Flex flexDirection={'row'} justifyContent={'center'} alignItems={'center'}>
+                <Input
+                    borderRightRadius={'none'}
+                    color={'white'}
+                    w={{base:'auto' ,xl:'300px'}}
+                    type="text"
+                    name='search'
+                    placeholder='Ingrese nombre del producto'
+                    value={searchValue}
+                    onChange={handleChange}
+                    onKeyPress={handleKeyPress}
+                />
+                <Button onClick={handleClick} borderLeftRadius={'none'} fontWeight={400} >Buscar</Button>
+            </Flex>
 
-        </div>
+        </Box>
     )
 }
-export default SearchBarAdmin
+export default SearchBarAdmin;

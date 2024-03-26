@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import drinksProvider from '../../../utils/drinksProvider/drinksProvider';
 import foodProvider from '../../../utils/foodProvider/foodProvider';
 import dessertsProvider from '../../../utils/dessertsProvider/dessertsProvider';
 import Swal from 'sweetalert2'
+import { Box, Button, Flex, FormControl, FormLabel, Input, Select, Text, Textarea } from '@chakra-ui/react';
 
 const DetailAdmin = ({ setDetailState, detailState, categoryToEdit, setItemstoEdit }) => {
     const [product, setProduct] = useState({
@@ -87,62 +88,65 @@ const DetailAdmin = ({ setDetailState, detailState, categoryToEdit, setItemstoEd
         })
     }
     return (
-        <div>
-            <label>Nombre: </label>
-            <input
+        <Box display={'flex'} justifyContent={'center'} alignItems={'center'} h={'auto'} p={'50px 0px'} >
+        <FormControl display={'flex'} flexDirection={'column'} justifyContent={'center'} gap={5} borderRadius={'30px'}
+         alignItems={'center'} h={'auto'} w={{base:'90%', sm:'90%', md:'90%', lg:'60%', xl:'40%'}} bg={'#A98467'} p={'30px 30px'}>
+            <FormLabel color={'white'} fontSize={'xl'}>Nombre </FormLabel>
+            <Input
+            bg={'white'}
                 type="text"
                 name='name'
                 placeholder={product.name}
                 value={product.name}
                 onChange={handleChange}
             />
-            <br />
 
-            <label>Precio: </label>
-            <input
+            <FormLabel color={'white'} fontSize={'xl'}>Precio </FormLabel>
+            <Input
+             bg={'white'}
                 type="number"
                 name='price'
                 placeholder={product.price}
                 value={product.price}
                 onChange={handleChange}
             />
-            <br />
 
-            <label>Estado: </label>
-            <select
+            <FormLabel color={'white'} fontSize={'xl'}>Estado </FormLabel>
+            <Select
+             bg={'white'}
                 name="stock"
                 onChange={handleChange}
                 value={product.stock}>
                 <option value={false} key="false">Inactivo</option>
                 <option value={true} key="true">Activo</option>
-            </select>
-            <br />
+            </Select>
 
-            <label>Categorias: </label>
-            <select
+            <FormLabel color={'white'} fontSize={'xl'}>Categorias: </FormLabel>
+            <Select
+                bg={'white'}
                 name="category"
                 onChange={handleCategoriesChange}
             >
-                <option value=""></option>
+                <option value="">Seleccione una categoria</option>
                 {currentArray.map(item =>
                     <option value={item} key={item}>{item}</option>
                 )}
-            </select>
-            <div>
+            </Select>
+            <Box w={'100%'} h={{base:'auto' , xl:'100px'}} display={'flex'} flexDirection={'row'} flexWrap={'wrap'} justifyContent={'space-evenly'} alignItems={'center'} gap={3}>
                 {product.category.map(item =>
-                (<div key={item}>
-                    <p value={item}>{item}</p>
-                    <button value={item} onClick={handleXClick}>x</button>
-                </div>)
+                (<Flex key={item} w={'auto'} >
+                    <Button _hover={'none'} bg={'#412a28'} color={'white'} value={item} onClick={handleXClick}>{item} x</Button>
+                </Flex>)
                 )}
-            </div>
+            </Box>
 
             {
                 product.accompaniment !== ''
                     ?
-                    <div>
-                        <label>Acompañamientos: </label>
-                        <textarea
+                    <>
+                        <FormLabel color={'white'}>Acompañamientos: </FormLabel>
+                        <Textarea
+                            bg={'white'}
                             type="text"
                             name='accompaniment'
                             placeholder={product.accompaniment}
@@ -151,16 +155,16 @@ const DetailAdmin = ({ setDetailState, detailState, categoryToEdit, setItemstoEd
                             rows="2"
                             onChange={handleChange}
                         />
-                        <br />
-                    </div>
+                    </>
                     : null
             }
             {
                 product.description !== ''
                     ?
-                    <div>
-                        <label>Descripción: </label>
-                        <textarea
+                    <>
+                        <FormLabel color={'white'}>Descripción: </FormLabel>
+                        <Textarea
+                             bg={'white'}
                             type="text"
                             name='description'
                             placeholder={product.description}
@@ -169,14 +173,16 @@ const DetailAdmin = ({ setDetailState, detailState, categoryToEdit, setItemstoEd
                             rows="2"
                             onChange={handleChange}
                         />
-                        <br />
-                    </div>
+                    </>
                     : null
             }
 
-            <button onClick={handleCancelClick}>Cancelar</button>
-            <button onClick={handleSaveClick}>Guardar</button>
-        </div>
+            <Flex gap={5}>
+                <Button bg={'#412a28'} color={'white'} onClick={handleCancelClick}>Cancelar</Button>
+                <Button bg={'#412a28'} color={'white'} onClick={handleSaveClick}>Guardar</Button>
+            </Flex>
+        </FormControl>
+        </Box>
     )
 }
 

@@ -10,7 +10,7 @@ const MealsCard = ({key, id, name, price, accompaniment}) => {
     justifyContent={'center'}
     textAlign={"center"}
     p={'20px 30px'}
-    w={'400px'}
+    w={{base: '70%', md:'400px', lg:'400px', xl:'400px'}}
     h={'400px'}
     key={key}
     bg={'aliceblue'}
