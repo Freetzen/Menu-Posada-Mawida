@@ -16,26 +16,32 @@ import getDessertsByNameController from "../controllers/getDessertsByNameControl
 import getDrinksByIdController from "../controllers/getDrinksByIdController.js";
 import getFoodByIdController from "../controllers/getFoodByIdController.js";
 import getDessertsByIdController from "../controllers/getDessertsByIdController.js";
+import deleteDrinkController from "../controllers/deleteDrinkController.js";
+import deleteDessertController from "../controllers/deleteDessertController.js";
+import deleteFoodController from "../controllers/deleteFoodController.js";
 
-const router = express.Router();
+const router = express.Router()
 
 router.get('/food', getFoodController)
 router.get('/food/name', getFoodByNameController)
 router.get('/food/id', getFoodByIdController)
 router.post('/food', postFoodController)
 router.put('/food', putFoodController)
+router.delete('/food', deleteFoodController)
 
 router.get('/desserts', getDessertsController)
 router.get('/desserts/name', getDessertsByNameController)
 router.get('/desserts/id', getDessertsByIdController)
 router.post('/desserts', postDessertsController)
 router.put('/desserts', putDessertsController)
+router.delete('/desserts', deleteDessertController)
 
 router.get('/drinks', getDrinksController)
 router.get('/drinks/name', getDrinksByNameController)
 router.get('/drinks/id', getDrinksByIdController)
 router.post('/drinks', postDrinkController)
 router.put('/drinks', putDrinkController)
+router.delete('/drinks', deleteDrinkController)
 
 router.get('/puseradminm', getUserAdminController)
 router.post('/puseradminm', postUserAdminController)

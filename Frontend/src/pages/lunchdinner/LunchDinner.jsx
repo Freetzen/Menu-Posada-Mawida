@@ -22,7 +22,10 @@ const LunchDinner = () => {
       const mealsTea = mealsBD.filter((item) =>
         item.category.includes(currentCategory)
       );
-      setMeals(mealsTea);
+      const filterActive = mealsTea.filter((item) =>
+        item.stock
+      )
+      setMeals(filterActive);
     };
 
     const bringDesserts = async () => {
@@ -30,7 +33,10 @@ const LunchDinner = () => {
       const dessertsTea = dessertsBD.filter((item) =>
         item.category.includes(currentCategory)
       );
-      setDesserts(dessertsTea);
+      const filterActive = dessertsTea.filter((item) =>
+        item.stock
+      )
+      setDesserts(filterActive);
     };
 
     const bringDrinks = async () => {
@@ -38,7 +44,10 @@ const LunchDinner = () => {
       const drinksTea = drinksBD.filter((item) =>
         item.category.includes(currentCategory)
       );
-      setDrinks(drinksTea);
+      const filterActive = drinksTea.filter((item) =>
+        item.stock
+      )
+      setDrinks(filterActive);
     };
 
     bringDrinks();
@@ -46,7 +55,6 @@ const LunchDinner = () => {
     bringDesserts();
   }, []);
 
-  console.log(desserts)
   return (
     <Flex
       id="bgImage"

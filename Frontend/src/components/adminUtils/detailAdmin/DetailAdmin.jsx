@@ -4,8 +4,12 @@ import foodProvider from '../../../utils/foodProvider/foodProvider';
 import dessertsProvider from '../../../utils/dessertsProvider/dessertsProvider';
 import Swal from 'sweetalert2'
 import { Box, Button, Flex, FormControl, FormLabel, Input, Select, Textarea } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
 const DetailAdmin = ({ setDetailState, detailState, setItemstoEdit }) => {
+
+    const navigate = useNavigate()
+
     const [product, setProduct] = useState({
         id: detailState._id,
         name: detailState.name,
@@ -87,8 +91,41 @@ const DetailAdmin = ({ setDetailState, detailState, setItemstoEdit }) => {
             [e.target.name]: e.target.value
         })
     }
-    console.log('detail',detailState)
-    console.log('product',product)
+
+    const handleDeleteClick = async() => {
+        try {
+            const swal = await Swal.fire({
+                title: "¿Seguro deseas eliminar el producto seleccionado?",
+                text: "*",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Eliminar",
+                cancelButtonText: "Cancelar"
+            })
+
+            if(swal.isConfirmed){
+                const deleteProduct = await foodProvider.deleteFoodById(product.id)
+                if(deleteProduct.deleted){
+                    Swal.fire({
+                        title: `${deleteProduct.message}`,
+                        icon: "success"
+                    });
+                    const meals = await foodProvider.getFood()
+                    setItemstoEdit(meals)
+                }else{
+                    Swal.fire({
+                        title: `${deleteProduct.message}`,
+                        icon: "warning"
+                    });
+                }
+            }
+            setDetailState({})
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
 
     return (
         <Box display={'flex'} justifyContent={'center'} alignItems={'center'} h={'auto'} p={'50px 0px'} >
@@ -183,7 +220,7 @@ const DetailAdmin = ({ setDetailState, detailState, setItemstoEdit }) => {
             <Flex gap={5}>
                 <Button bg={'#412a28'} color={'white'} onClick={handleCancelClick}>Cancelar</Button>
                 <Button bg={'#412a28'} color={'white'} onClick={handleSaveClick}>Guardar</Button>
-                <Button bg={'#412a28'} color={'white'}>Eliminar</Button>
+                <Button bg={'#412a28'} color={'white'} onClick={handleDeleteClick}>Eliminar</Button>
             </Flex>
         </FormControl>
         </Box>

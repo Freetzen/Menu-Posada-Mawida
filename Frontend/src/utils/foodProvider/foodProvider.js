@@ -44,8 +44,18 @@ const foodProvider = {
         } catch (error) {
             console.log(error.message)
         }
+    },
+    async deleteFoodById(id) {
+        try {
+            const obj = {
+                id: id
+            }
+            const foodById = await axios.delete('/food', {params: obj})
+            return foodById.data
+        } catch (error) {
+            console.log(error.message)
+        }
     }
-
 }
 
 export default foodProvider
