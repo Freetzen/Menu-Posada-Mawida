@@ -8,11 +8,13 @@ export const postFoodController = async (req, res) => {
           return str.charAt(0).toUpperCase() + str.slice(1);
         }
 
-        capitalizarPrimeraLetra(name)
+
+        let nameToUpperCase = capitalizarPrimeraLetra(name)
+
         
-        if(name && price){
+        if(nameToUpperCase && price){
             const food = await createFood({
-                name,
+                name: nameToUpperCase,
                 accompaniment,
                 price,
                 image,

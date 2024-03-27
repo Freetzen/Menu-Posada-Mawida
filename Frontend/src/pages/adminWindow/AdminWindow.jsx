@@ -40,6 +40,7 @@ const AdminWindow = () => {
 
   const showAdditionalColumns = useBreakpointValue({ base: false, xs: false,  sm: false, md:true, lg:true, xl:true, full:true });
 
+
   return (
     <Box>
       <SearchBarAdmin

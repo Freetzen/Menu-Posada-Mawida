@@ -158,7 +158,7 @@ const CreateDrink = () => {
         <FormLabel htmlFor="" color={'white'} fontSize={'xl'}>Imagen</FormLabel>
         <Input type="text" bg={'white'}/>
 
-        <Button bg={'#412a28'} color={'white'} type='nsubmit'>Crear</Button>
+        <Button bg={'#412a28'} color={'white'} type='submit'>Crear</Button>
       </FormControl>
     </Box>
   );

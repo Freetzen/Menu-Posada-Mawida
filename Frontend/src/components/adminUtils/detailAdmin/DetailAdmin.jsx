@@ -3,11 +3,11 @@ import drinksProvider from '../../../utils/drinksProvider/drinksProvider';
 import foodProvider from '../../../utils/foodProvider/foodProvider';
 import dessertsProvider from '../../../utils/dessertsProvider/dessertsProvider';
 import Swal from 'sweetalert2'
-import { Box, Button, Flex, FormControl, FormLabel, Input, Select, Text, Textarea } from '@chakra-ui/react';
+import { Box, Button, Flex, FormControl, FormLabel, Input, Select, Textarea } from '@chakra-ui/react';
 
-const DetailAdmin = ({ setDetailState, detailState, categoryToEdit, setItemstoEdit }) => {
+const DetailAdmin = ({ setDetailState, detailState, setItemstoEdit }) => {
     const [product, setProduct] = useState({
-        id: detailState.id,
+        id: detailState._id,
         name: detailState.name,
         accompaniment: detailState.accompaniment,
         category: detailState.category,
@@ -87,13 +87,16 @@ const DetailAdmin = ({ setDetailState, detailState, categoryToEdit, setItemstoEd
             [e.target.name]: e.target.value
         })
     }
+    console.log('detail',detailState)
+    console.log('product',product)
+
     return (
         <Box display={'flex'} justifyContent={'center'} alignItems={'center'} h={'auto'} p={'50px 0px'} >
         <FormControl display={'flex'} flexDirection={'column'} justifyContent={'center'} gap={5} borderRadius={'30px'}
          alignItems={'center'} h={'auto'} w={{base:'90%', sm:'90%', md:'90%', lg:'60%', xl:'40%'}} bg={'#A98467'} p={'30px 30px'}>
             <FormLabel color={'white'} fontSize={'xl'}>Nombre </FormLabel>
             <Input
-            bg={'white'}
+                bg={'white'}
                 type="text"
                 name='name'
                 placeholder={product.name}
@@ -164,7 +167,7 @@ const DetailAdmin = ({ setDetailState, detailState, categoryToEdit, setItemstoEd
                     <>
                         <FormLabel color={'white'}>Descripción: </FormLabel>
                         <Textarea
-                             bg={'white'}
+                            bg={'white'}
                             type="text"
                             name='description'
                             placeholder={product.description}
@@ -180,6 +183,7 @@ const DetailAdmin = ({ setDetailState, detailState, categoryToEdit, setItemstoEd
             <Flex gap={5}>
                 <Button bg={'#412a28'} color={'white'} onClick={handleCancelClick}>Cancelar</Button>
                 <Button bg={'#412a28'} color={'white'} onClick={handleSaveClick}>Guardar</Button>
+                <Button bg={'#412a28'} color={'white'}>Eliminar</Button>
             </Flex>
         </FormControl>
         </Box>
