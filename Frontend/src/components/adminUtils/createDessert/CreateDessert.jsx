@@ -62,7 +62,7 @@ const CreateDessert = () => {
 
       Swal.fire({
         icon: "success",
-        title: `${create.error}`,
+        title: "Producto creado correctamente",
         showConfirmButton: false,
         timer: 1500,
         customClass: {
@@ -142,7 +142,7 @@ const CreateDessert = () => {
         <FormLabel htmlFor="" color={'white'} fontSize={'xl'}>Imagen</FormLabel>
         <Input type="text" bg={'white'} />
 
-        <Button bg={'#412a28'} color={'white'} type='nsubmit'>Crear</Button>
+        <Button bg={'#412a28'} color={'white'} type='submit'>Crear</Button>
 
       </FormControl>
 

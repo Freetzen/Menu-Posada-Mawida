@@ -45,6 +45,8 @@ const LunchDinner = () => {
     bringMeals();
     bringDesserts();
   }, []);
+
+  console.log(desserts)
   return (
     <Flex
       id="bgImage"

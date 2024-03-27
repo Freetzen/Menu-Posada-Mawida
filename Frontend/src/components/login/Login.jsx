@@ -51,7 +51,7 @@ const Login = () => {
   return (
     <Box className='bg' border={'1px'} w={'100%'} h={'950px'} display={'flex'} justifyContent={'center'} alignItems={'center'}>
         
-        <FormControl onSubmit={handleSubmit} borderRadius={'30px'} w={{base:'auto'}} h={{base:'auto'}} p={{base:'50px 50px', sm:'70px 80px', xl:'70px 80px'}}  m={'0px 20px'} bg={'#412A28'} display={'flex'} flexDirection={'column'}
+        <FormControl as={'form'} onSubmit={handleSubmit} borderRadius={'30px'} w={{base:'auto'}} h={{base:'auto'}} p={{base:'50px 50px', sm:'70px 80px', xl:'70px 80px'}}  m={'0px 20px'} bg={'#412A28'} display={'flex'} flexDirection={'column'}
          justifyContent={'center'} alignItems={'center'}  gap={5}>
             <Flex justifyContent={'center'}><Image src={mawidaLogo} w={'200px'}></Image></Flex>
             <Box w={{base:'auto', xl:'300px'}}>
