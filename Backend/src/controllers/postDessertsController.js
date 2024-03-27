@@ -8,11 +8,11 @@ const postDessertsController = async (req, res) => {
       return str.charAt(0).toUpperCase() + str.slice(1);
     }
 
-    capitalizarPrimeraLetra(name)
+    let nameToUpperCase = capitalizarPrimeraLetra(name)
 
-    if (name && price) {
+    if (nameToUpperCase && price) {
       const desserts = await createDessert({
-        name,
+        name: nameToUpperCase,
         price,
         image,
         category
