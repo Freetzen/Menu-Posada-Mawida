@@ -1,10 +1,14 @@
 import axios from "axios"
 
+const urlLogin = import.meta.env.VITE_API_SECRET_LOGIN
+const urlPost = import.meta.env.VITE_API_SECRET_POST
+
 const userAdminProvider = {
     
     async getUserAdmin(user) {
         try {
-            const response = await axios.get('/puseradminm', {params: user})
+            axios.defaults.withCredentials = true;
+            const response = await axios.post(urlLogin, user) //COLOCAR EN .ENV
             return response.data
         } catch (error) {
             console.log(error.message)
@@ -12,10 +16,27 @@ const userAdminProvider = {
     },
     async postUserAdmin(object) {
         try {
-            const response = await axios.post('/puseradminm', object)
+            const response = await axios.post(urlPost, object)
             return response.data
         } catch (error) {
             console.log(error.message)
+        }
+    },
+    async ValidateAdmin() {
+        try {
+            axios.defaults.withCredentials = true;
+            const response = await axios.post(`/auth/api/log/validating`)
+            return response.data
+        } catch (error) {
+            console.log(error.message)
+        }
+    },
+    async destroySession (){
+        try {
+            const response = await axios.get('/auth/api/log/destroysession')
+            return response
+        } catch (error) {
+            console.log(error)
         }
     }
 
