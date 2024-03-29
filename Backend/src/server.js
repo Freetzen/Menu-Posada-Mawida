@@ -4,13 +4,24 @@ import morgan from 'morgan'
 import cors from 'cors'
 import session from 'express-session';
 import MongoStore from 'connect-mongo'
-import router from './routes/index.js';
+import cookieParser from 'cookie-parser';
+import routerUser from './routes/users.routes.js';
+import routerFood from './routes/food.routes.js';
+import routerDesserts from './routes/desserts.routes.js';
+import routerDrinks from './routes/drinks.routes.js';
 
 const server = express();
 
 server.use(morgan("dev"));
 server.use(express.json());
-server.use(cors());
+
+server.use(cors({
+    origin: ['http://localhost:5173'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+}));
+
+server.use(cookieParser());
 
 server.use(session({
     store: MongoStore.create({
@@ -23,7 +34,13 @@ server.use(session({
     rolling: false
 }))
 
-server.use(router);
+const api = process.env.API_SECRET
+
+server.use(api, routerUser); // USUARIO
+server.use('/', routerFood); // COMIDAS
+server.use('/', routerDesserts); // POSTRES
+server.use('/', routerDrinks); // BEBIDAS
+
 
 
 

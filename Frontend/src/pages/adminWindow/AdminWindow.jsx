@@ -19,8 +19,10 @@ import {
   Tr,
   useBreakpointValue,
 } from "@chakra-ui/react";
+import axios from "axios";
 
 const AdminWindow = () => {
+  
   const [categoryToEdit, setCategoryToEdit] = useState("All");
   const [itemstoEdit, setItemstoEdit] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
