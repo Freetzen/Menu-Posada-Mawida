@@ -95,6 +95,7 @@ const TeaPage = () => {
                 key={item._id}
                 id={item._id}
                 name={item.name}
+                image={item.image}
                 price={item.price}
                 accompaniment={item.accompaniment}
               />

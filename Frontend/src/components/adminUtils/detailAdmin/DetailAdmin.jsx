@@ -15,6 +15,7 @@ const DetailAdmin = ({ setDetailState, detailState, setItemstoEdit }) => {
         name: detailState.name,
         accompaniment: detailState.accompaniment,
         category: detailState.category,
+        productype: detailState.productype,
         description: detailState.description,
         price: detailState.price,
         stock: detailState.stock
@@ -91,7 +92,7 @@ const DetailAdmin = ({ setDetailState, detailState, setItemstoEdit }) => {
             [e.target.name]: e.target.value
         })
     }
-
+    console.log(product)
     const handleDeleteClick = async() => {
         try {
             const swal = await Swal.fire({
@@ -106,19 +107,55 @@ const DetailAdmin = ({ setDetailState, detailState, setItemstoEdit }) => {
             })
 
             if(swal.isConfirmed){
-                const deleteProduct = await foodProvider.deleteFoodById(product.id)
-                if(deleteProduct.deleted){
-                    Swal.fire({
-                        title: `${deleteProduct.message}`,
-                        icon: "success"
-                    });
-                    const meals = await foodProvider.getFood()
-                    setItemstoEdit(meals)
-                }else{
-                    Swal.fire({
-                        title: `${deleteProduct.message}`,
-                        icon: "warning"
-                    });
+
+                if(product.productype === 'drinks'){
+                    const deleteProduct = await drinksProvider.deleteDrinkById(product.id)
+                    console.log(deleteProduct)
+                    if(deleteProduct.deleted){
+                        Swal.fire({
+                            title: `${deleteProduct.message}`,
+                            icon: "success"
+                        });
+                        const meals = await foodProvider.getFood()
+                        setItemstoEdit(meals)
+                    }else{
+                        Swal.fire({
+                            title: `${deleteProduct.message}`,
+                            icon: "warning"
+                        });
+                    }
+                }
+                if(product.productype === 'food'){
+                    const deleteProduct = await foodProvider.deleteFoodById(product.id)
+                    if(deleteProduct.deleted){
+                        Swal.fire({
+                            title: `${deleteProduct.message}`,
+                            icon: "success"
+                        });
+                        const meals = await foodProvider.getFood()
+                        setItemstoEdit(meals)
+                    }else{
+                        Swal.fire({
+                            title: `${deleteProduct.message}`,
+                            icon: "warning"
+                        });
+                    }
+                }
+                if(product.productype === 'dessert'){
+                    const deleteProduct = await dessertsProvider.deleteDessertById(product.id)
+                    if(deleteProduct.deleted){
+                        Swal.fire({
+                            title: `${deleteProduct.message}`,
+                            icon: "success"
+                        });
+                        const meals = await foodProvider.getFood()
+                        setItemstoEdit(meals)
+                    }else{
+                        Swal.fire({
+                            title: `${deleteProduct.message}`,
+                            icon: "warning"
+                        });
+                    }
                 }
             }
             setDetailState({})

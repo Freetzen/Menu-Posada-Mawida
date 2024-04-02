@@ -44,6 +44,17 @@ const drinksProvider = {
         } catch (error) {
             console.log(error.message)
         }
+    },
+    async deleteDrinkById(id) {
+        try {
+            const obj = {
+                id: id
+            }
+            const foodById = await axios.delete('/drinks', {params: obj})
+            return foodById.data
+        } catch (error) {
+            console.log(error.message)
+        }
     }
 
 }

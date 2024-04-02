@@ -5,7 +5,7 @@ import { putFoodController } from "../controllers/putFoodController.js";
 import getFoodByNameController from "../controllers/getFoodByNameController.js";
 import getFoodByIdController from "../controllers/getFoodByIdController.js";
 import deleteFoodController from "../controllers/deleteFoodController.js";
-import authJWT from "../utils/authJWT.js";
+import authJWT from "../middlewares/authJWT.js";
 
 const router = express.Router()
 

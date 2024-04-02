@@ -109,7 +109,7 @@ const Home = () => {
               fontWeight={"200"}
               color={"#ede0d4"}
             >
-              Desayuno continental <br/> ${breakfast.price}
+              Desayuno continental <br/> ${breakfast?.price}
             </Text>
           </Flex>
 

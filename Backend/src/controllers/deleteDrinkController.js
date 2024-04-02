@@ -2,7 +2,7 @@ import { deleteDrink } from "../services/drinkServices.js"
 
 const deleteDrinkController = async(req, res) => {
   try {
-    const {id} = req.body
+    const {id} = req.query
 
     const deleteDrinkById = await deleteDrink(id)
 

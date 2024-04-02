@@ -3,7 +3,7 @@ import { deleteDessert } from "../services/dessertsServices.js"
 
 const deleteDessertController = async(req, res) => {
 try {
-    const {id} = req.body
+    const {id} = req.query
     
     const deleteDessertById = await deleteDessert(id)
     

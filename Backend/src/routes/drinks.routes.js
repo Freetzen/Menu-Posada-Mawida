@@ -5,7 +5,7 @@ import putDrinkController from "../controllers/putDrinkController.js";
 import getDrinksByNameController from "../controllers/getDrinksByNameController.js";
 import getDrinksByIdController from "../controllers/getDrinksByIdController.js";
 import deleteDrinkController from "../controllers/deleteDrinkController.js";
-import authJWT from "../utils/authJWT.js";
+import authJWT from "../middlewares/authJWT.js";
 
 const router = express.Router()
 
