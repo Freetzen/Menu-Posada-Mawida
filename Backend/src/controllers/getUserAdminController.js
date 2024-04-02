@@ -15,7 +15,7 @@ const getUserAdminController = async (req, res) => {
 
         if (passwordValidate) {
           const payload= {
-            sub: userDB.email,
+            email: userDB.email,
             id: userDB._id
           }
           const token = jwt.sign(payload, process.env.SECRET_SIGN_JWT)

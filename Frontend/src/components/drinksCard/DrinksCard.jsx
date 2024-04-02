@@ -1,8 +1,7 @@
 import { Box, Image, Text } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
-import jugoNaranja from "./../../../public/img/jugo.png";
 
-const DrinksCard = ({ id, name, description, price }) => {
+const DrinksCard = ({ id, name, description, price, image }) => {
   return (
     <Box
     display={"flex"}
@@ -27,7 +26,7 @@ boxShadow={'0px 6px 12px rgba(0, 0, 0, 0.2)'}
         alignItems={"center"}
       >
         <Box display={"flex"} justifyContent={"center"}>
-          <Image src={jugoNaranja} w={"100px"}></Image>
+          <Image src={image} w={"100px"}></Image>
         </Box>
         <Text as={"h3"} fontSize={"2xl"} fontWeight={1000} color={'#543e3c'}>
           {name}

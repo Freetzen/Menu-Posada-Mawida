@@ -1,8 +1,7 @@
 import { Box, Image, Text } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
-import TremendoBife from "./../../../public/img/pngegg.png";
 
-const MealsCard = ({key, id, name, price, accompaniment}) => {
+const MealsCard = ({key, id, name, price, accompaniment, image}) => {
   return (
     <Box
     display={"flex"}
@@ -22,7 +21,7 @@ const MealsCard = ({key, id, name, price, accompaniment}) => {
       <NavLink to={`/mealdetail/${id}`}>
         <Box w={'100%'} h={'auto'} display={'flex'} flexDirection={'column'} alignItems={'center'} gap={3}>
           <Box display={"flex"} justifyContent={"center"}>
-            <Image src={TremendoBife} w={"200px"}></Image>
+            <Image src={image} w={"200px"}></Image>
           </Box>
           <Text as={"h3"} fontSize={"2xl"} fontWeight={1000} color={'#543e3c'}>
             {name}

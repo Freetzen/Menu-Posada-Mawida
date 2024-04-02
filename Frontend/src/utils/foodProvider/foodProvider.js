@@ -1,4 +1,5 @@
 import axios from 'axios'
+const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUDNAME
 
 const foodProvider = {
 
@@ -56,6 +57,22 @@ const foodProvider = {
         } catch (error) {
             console.log(error.message)
         }
+    },
+    async uploadImage(image) {
+        try {
+            const url = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`
+                  const data = new FormData();
+                  data.append("file", image);
+                  data.append("upload_preset", "PosadaMawida");
+                  const upload = await fetch(url, {
+                      method: "POST",
+                      body: data
+                  })
+                  const responseData = await upload.json()
+                  return responseData
+          } catch (error) {
+            console.log(error)
+          }
     }
 }
 
