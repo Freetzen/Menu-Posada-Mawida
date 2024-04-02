@@ -23,7 +23,7 @@ function App() {
         <Route path={urlLogin} element={<Login />} />
 
         <Route element={<ProtectedRoute/>}>
-        <Route path={urlAdmin} element={<Admin />} />
+        <Route path={urlAdmin} element={<Admin />} /> {/* RUTA DEL ADMINISTRADOR */}
         </Route>
         
         <Route path='/lunchdinner' element={<LunchDinner />} />

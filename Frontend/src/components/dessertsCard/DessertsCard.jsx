@@ -1,8 +1,7 @@
 import { Box, Image, Text } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
-import postre from "./../../../public/img/postre.png";
 
-const DessertsCard = ({ id, name, description, price }) => {
+const DessertsCard = ({ id, name, description, price, image }) => {
   return (
 
 <Box
@@ -23,7 +22,7 @@ boxShadow={'0px 6px 12px rgba(0, 0, 0, 0.2)'}
 <NavLink to={`/dessertdetail/${id}`}>
   <Box w={'100%'} h={'auto'} display={'flex'} flexDirection={'column'} alignItems={'center'}>
     <Box display={"flex"} justifyContent={"center"}>
-      <Image src={postre} w={"200px"}></Image>
+      <Image src={image} w={"200px"}></Image>
     </Box>
     <Text as={"h3"} fontSize={"2xl"} fontWeight={1000} color={'#543e3c'}>
       {name}
