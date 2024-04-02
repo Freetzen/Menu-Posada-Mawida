@@ -80,6 +80,7 @@ const BarFridge = () => {
                 id={item._id}
                 name={item.name}
                 price={item.price}
+                image={item.image}
                 description={item.description}
               />
             ))}

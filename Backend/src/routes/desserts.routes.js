@@ -5,7 +5,7 @@ import putDessertsController from "../controllers/putDessertsController.js";
 import getDessertsByNameController from "../controllers/getDessertsByNameController.js";
 import getDessertsByIdController from "../controllers/getDessertsByIdController.js";
 import deleteDessertController from "../controllers/deleteDessertController.js";
-import authJWT from "../utils/authJWT.js";
+import authJWT from "../middlewares/authJWT.js";
 
 const router = express.Router()
 

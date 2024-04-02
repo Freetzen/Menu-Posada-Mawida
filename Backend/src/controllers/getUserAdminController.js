@@ -18,7 +18,7 @@ const getUserAdminController = async (req, res) => {
             email: userDB.email,
             id: userDB._id
           }
-          const token = jwt.sign(payload, process.env.SECRET_SIGN_JWT)
+          const token = jwt.sign(payload, process.env.SECRET_SIGN_JWT, {expiresIn: '1d'})
           res.cookie('token', token)
           return res.status(200).json({ login: true, data: payload });
         } else {
@@ -28,9 +28,7 @@ const getUserAdminController = async (req, res) => {
       return res.status(200).json({ login: false, message: "Usuario no encontrado." });
     }
 
-    return res
-      .status(200)
-      .json({ login: false, message: "Faltan credenciales." });
+    return res.status(200).json({ login: false, message: "Faltan credenciales." });
   } catch (error) {
     res.status(500).json(error.message);
   }

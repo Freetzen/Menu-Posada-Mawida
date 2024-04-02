@@ -10,6 +10,7 @@ const ProtectedRoute = () => {
     const validatingUser = async () => {
         try {
             const val = await userAdminProvider.ValidateAdmin()
+            console.log(val)
             if(!val || val === 'El token no existe'){
                 navigate(urlLogin)
             }
