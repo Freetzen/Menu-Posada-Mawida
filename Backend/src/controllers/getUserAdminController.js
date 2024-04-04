@@ -1,9 +1,11 @@
+import 'dotenv/config'
 import { findUserByEmail } from "../services/userServices.js";
 import { validatePassword } from "../utils/bcrypt.js";
+import jwt from 'jsonwebtoken'
 
 const getUserAdminController = async (req, res) => {
   try {
-    const { email, password } = req.query;
+    const { email, password } = req.body;
 
     if (email && password) {
       const userDB = await findUserByEmail(email);
@@ -12,7 +14,13 @@ const getUserAdminController = async (req, res) => {
         const passwordValidate = validatePassword(password, userDB.password);
 
         if (passwordValidate) {
-          return res.status(200).json({ login: true });
+          const payload= {
+            email: userDB.email,
+            id: userDB._id
+          }
+          const token = jwt.sign(payload, process.env.SECRET_SIGN_JWT, {expiresIn: '1d'})
+          res.cookie('token', token)
+          return res.status(200).json({ login: true, data: payload });
         } else {
           return res.status(200).json({ login: false, message: "Credenciales incorrectas." });
         }
@@ -20,9 +28,7 @@ const getUserAdminController = async (req, res) => {
       return res.status(200).json({ login: false, message: "Usuario no encontrado." });
     }
 
-    return res
-      .status(200)
-      .json({ login: false, message: "Faltan credenciales." });
+    return res.status(200).json({ login: false, message: "Faltan credenciales." });
   } catch (error) {
     res.status(500).json(error.message);
   }

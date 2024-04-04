@@ -26,7 +26,7 @@ const DetailFood = () => {
   return (
     <div>
       <p>{info.name}</p>
-      <p>{info.image ? info.image : "Default image"}</p>
+      <img src={info.image}/>
       <p>$ {info.price}</p>
     </div>
   );

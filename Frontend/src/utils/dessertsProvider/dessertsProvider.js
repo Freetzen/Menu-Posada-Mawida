@@ -37,6 +37,17 @@ const dessertsProvider = {
             console.log(error.message)
         }
     },
+    async deleteDessertById(id) {
+        try {
+            const obj = {
+                id: id
+            }
+            const foodById = await axios.delete('/desserts', {params: obj})
+            return foodById.data
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
 
 }
 

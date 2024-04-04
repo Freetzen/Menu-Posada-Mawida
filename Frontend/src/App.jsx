@@ -9,16 +9,23 @@ import DetailDesserts from './components/detailDesserts/DetailDesserts'
 import Login from './components/login/Login'
 import LunchDinner from './pages/lunchdinner/LunchDinner'
 import BarFridge from './pages/barFridge/BarFridge'
-axios.defaults.baseURL = 'http://localhost:3001'
+import ProtectedRoute from './components/protectedRoute/ProtectedRoute'
+axios.defaults.baseURL = 'https://7bgbr6hl-3001.brs.devtunnels.ms'
 
+const urlLogin = import.meta.env.VITE_URL_LOGIN
+const urlAdmin = import.meta.env.VITE_URL_ADMIN
 function App() {
 
   return (
     <>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/backofficepm' element={<Login />} />
-        <Route path='/backofficepmadmin' element={<Admin />} />
+        <Route path={urlLogin} element={<Login />} />
+
+        <Route element={<ProtectedRoute/>}>
+        <Route path={urlAdmin} element={<Admin />} /> {/* RUTA DEL ADMINISTRADOR */}
+        </Route>
+        
         <Route path='/lunchdinner' element={<LunchDinner />} />
         <Route path='/barfridge' element={<BarFridge />} />
         <Route path='/tea' element={<TeaPage />} />

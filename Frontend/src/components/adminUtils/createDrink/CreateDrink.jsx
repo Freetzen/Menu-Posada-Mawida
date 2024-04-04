@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import drinksProvider from "../../../utils/drinksProvider/drinksProvider";
 import { Box, Button, Flex, FormControl, FormLabel, Input, Select, Text } from "@chakra-ui/react";
+import foodProvider from "../../../utils/foodProvider/foodProvider";
 
 const CreateDrink = () => {
   const [currentArray, setCurrentArray] = useState([
@@ -51,6 +52,19 @@ const CreateDrink = () => {
       [name]: value,
     });
   };
+
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0]  
+    try {
+      const upload = await foodProvider.uploadImage(file)
+      setProduct({
+        ...product,
+        image: upload.secure_url
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -156,9 +170,9 @@ const CreateDrink = () => {
         </Box>
 
         <FormLabel htmlFor="" color={'white'} fontSize={'xl'}>Imagen</FormLabel>
-        <Input type="text" bg={'white'}/>
+        <Input type="file" bg={'white'} onChange={handleFileChange}/>
 
-        <Button bg={'#412a28'} color={'white'} type='nsubmit'>Crear</Button>
+        <Button bg={'#412a28'} color={'white'} type='submit'>Crear</Button>
       </FormControl>
     </Box>
   );

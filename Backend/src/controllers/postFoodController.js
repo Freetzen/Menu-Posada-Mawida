@@ -8,11 +8,11 @@ export const postFoodController = async (req, res) => {
           return str.charAt(0).toUpperCase() + str.slice(1);
         }
 
-        capitalizarPrimeraLetra(name)
-        
-        if(name && price){
+        let nameToUpperCase = capitalizarPrimeraLetra(name)
+
+        if(nameToUpperCase && price && image){
             const food = await createFood({
-                name,
+                name: nameToUpperCase,
                 accompaniment,
                 price,
                 image,
@@ -22,7 +22,7 @@ export const postFoodController = async (req, res) => {
                 return res.status(200).json(food);
             }
         }else{
-            return res.status(200).json({error: 'Falta información'})
+            return res.status(200).json({error: 'Falta información. Revisar Nombre, precio o imagen'})
         }
       
       res.status(404).json({error: 'Food not found'})

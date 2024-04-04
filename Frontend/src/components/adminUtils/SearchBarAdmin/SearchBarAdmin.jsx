@@ -1,13 +1,16 @@
 import { useState } from 'react'
 import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router-dom'
 import drinksProvider from '../../../utils/drinksProvider/drinksProvider'
 import foodProvider from '../../../utils/foodProvider/foodProvider'
 import dessertsProvider from '../../../utils/dessertsProvider/dessertsProvider'
 import { Box, Button, Flex, Image, Input, Select } from '@chakra-ui/react'
 import mawidaLogo from "./../../../../public/img/mawida.png"; 
+import userAdminProvider from '../../../utils/userAdminProvider/userAdminProvider'
 
 const SearchBarAdmin = ({ setCategoryToEdit, setItemstoEdit, setDetailState, itemstoEdit, allProducts }) => {
 
+    const navigate = useNavigate()
     const [searchValue, setSearchValue] = useState('')
 
     const getAllproducts = async () => {
@@ -82,6 +85,11 @@ const SearchBarAdmin = ({ setCategoryToEdit, setItemstoEdit, setDetailState, ite
         setDetailState('create')
     }
 
+    const handleDestroy = () => {
+        userAdminProvider.destroySession()
+        navigate('/')
+    }
+
     return (
         <Box h={'auto'} p={'50px 0px'} display={'flex'} flexDirection={'row'} flexWrap={'wrap'} justifyContent={'center'} alignItems={'center'} gap={5} bg={'#412a28'}>
             <Flex w={'100%'} justifyContent={'center'} alignItems={'center'}><Image src={mawidaLogo} w={'300px'}></Image></Flex>
@@ -114,6 +122,9 @@ const SearchBarAdmin = ({ setCategoryToEdit, setItemstoEdit, setDetailState, ite
                     onKeyPress={handleKeyPress}
                 />
                 <Button onClick={handleClick} borderLeftRadius={'none'} fontWeight={400} >Buscar</Button>
+            </Flex>
+            <Flex flexDirection={'row'} justifyContent={'center'} alignItems={'center'}>
+                <Button onClick={handleDestroy} borderLeftRadius={'none'} fontWeight={400} >Cerrar Sesión</Button>
             </Flex>
 
         </Box>

@@ -3,14 +3,19 @@ import drinksProvider from '../../../utils/drinksProvider/drinksProvider';
 import foodProvider from '../../../utils/foodProvider/foodProvider';
 import dessertsProvider from '../../../utils/dessertsProvider/dessertsProvider';
 import Swal from 'sweetalert2'
-import { Box, Button, Flex, FormControl, FormLabel, Input, Select, Text, Textarea } from '@chakra-ui/react';
+import { Box, Button, Flex, FormControl, FormLabel, Input, Select, Textarea } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
-const DetailAdmin = ({ setDetailState, detailState, categoryToEdit, setItemstoEdit }) => {
+const DetailAdmin = ({ setDetailState, detailState, setItemstoEdit }) => {
+
+    const navigate = useNavigate()
+
     const [product, setProduct] = useState({
-        id: detailState.id,
+        id: detailState._id,
         name: detailState.name,
         accompaniment: detailState.accompaniment,
         category: detailState.category,
+        productype: detailState.productype,
         description: detailState.description,
         price: detailState.price,
         stock: detailState.stock
@@ -87,13 +92,85 @@ const DetailAdmin = ({ setDetailState, detailState, categoryToEdit, setItemstoEd
             [e.target.name]: e.target.value
         })
     }
+    console.log(product)
+    const handleDeleteClick = async() => {
+        try {
+            const swal = await Swal.fire({
+                title: "¿Seguro deseas eliminar el producto seleccionado?",
+                text: "*",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Eliminar",
+                cancelButtonText: "Cancelar"
+            })
+
+            if(swal.isConfirmed){
+
+                if(product.productype === 'drinks'){
+                    const deleteProduct = await drinksProvider.deleteDrinkById(product.id)
+                    console.log(deleteProduct)
+                    if(deleteProduct.deleted){
+                        Swal.fire({
+                            title: `${deleteProduct.message}`,
+                            icon: "success"
+                        });
+                        const meals = await foodProvider.getFood()
+                        setItemstoEdit(meals)
+                    }else{
+                        Swal.fire({
+                            title: `${deleteProduct.message}`,
+                            icon: "warning"
+                        });
+                    }
+                }
+                if(product.productype === 'food'){
+                    const deleteProduct = await foodProvider.deleteFoodById(product.id)
+                    if(deleteProduct.deleted){
+                        Swal.fire({
+                            title: `${deleteProduct.message}`,
+                            icon: "success"
+                        });
+                        const meals = await foodProvider.getFood()
+                        setItemstoEdit(meals)
+                    }else{
+                        Swal.fire({
+                            title: `${deleteProduct.message}`,
+                            icon: "warning"
+                        });
+                    }
+                }
+                if(product.productype === 'dessert'){
+                    const deleteProduct = await dessertsProvider.deleteDessertById(product.id)
+                    if(deleteProduct.deleted){
+                        Swal.fire({
+                            title: `${deleteProduct.message}`,
+                            icon: "success"
+                        });
+                        const meals = await foodProvider.getFood()
+                        setItemstoEdit(meals)
+                    }else{
+                        Swal.fire({
+                            title: `${deleteProduct.message}`,
+                            icon: "warning"
+                        });
+                    }
+                }
+            }
+            setDetailState({})
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+
     return (
         <Box display={'flex'} justifyContent={'center'} alignItems={'center'} h={'auto'} p={'50px 0px'} >
         <FormControl display={'flex'} flexDirection={'column'} justifyContent={'center'} gap={5} borderRadius={'30px'}
          alignItems={'center'} h={'auto'} w={{base:'90%', sm:'90%', md:'90%', lg:'60%', xl:'40%'}} bg={'#A98467'} p={'30px 30px'}>
             <FormLabel color={'white'} fontSize={'xl'}>Nombre </FormLabel>
             <Input
-            bg={'white'}
+                bg={'white'}
                 type="text"
                 name='name'
                 placeholder={product.name}
@@ -164,7 +241,7 @@ const DetailAdmin = ({ setDetailState, detailState, categoryToEdit, setItemstoEd
                     <>
                         <FormLabel color={'white'}>Descripción: </FormLabel>
                         <Textarea
-                             bg={'white'}
+                            bg={'white'}
                             type="text"
                             name='description'
                             placeholder={product.description}
@@ -180,6 +257,7 @@ const DetailAdmin = ({ setDetailState, detailState, categoryToEdit, setItemstoEd
             <Flex gap={5}>
                 <Button bg={'#412a28'} color={'white'} onClick={handleCancelClick}>Cancelar</Button>
                 <Button bg={'#412a28'} color={'white'} onClick={handleSaveClick}>Guardar</Button>
+                <Button bg={'#412a28'} color={'white'} onClick={handleDeleteClick}>Eliminar</Button>
             </Flex>
         </FormControl>
         </Box>
