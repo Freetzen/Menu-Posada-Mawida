@@ -10,7 +10,7 @@ import Login from './components/login/Login'
 import LunchDinner from './pages/lunchdinner/LunchDinner'
 import BarFridge from './pages/barFridge/BarFridge'
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute'
-axios.defaults.baseURL = 'http://localhost:3001'
+axios.defaults.baseURL = 'https://7bgbr6hl-3001.brs.devtunnels.ms'
 
 const urlLogin = import.meta.env.VITE_URL_LOGIN
 const urlAdmin = import.meta.env.VITE_URL_ADMIN
