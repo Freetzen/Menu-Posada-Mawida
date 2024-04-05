@@ -12,6 +12,7 @@ import routerDrinks from './routes/drinks.routes.js';
 
 const server = express();
 
+server.use(cookieParser());
 server.use(morgan("dev"));
 server.use(express.json());
 
@@ -21,7 +22,6 @@ server.use(cors({
     credentials: true
 }));
 
-server.use(cookieParser());
 
 server.use(session({
     store: MongoStore.create({
