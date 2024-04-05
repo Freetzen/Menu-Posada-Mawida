@@ -18,7 +18,7 @@ const getUserAdminController = async (req, res) => {
             email: userDB.email,
             id: userDB._id
           }
-          const token = jwt.sign(payload, process.env.SECRET_SIGN_JWT, {expiresIn: '1d'})
+          const token = jwt.sign(payload, process.env.SECRET_SIGN_JWT)
           res.cookie('token', token)
           return res.status(200).json({ login: true, data: payload });
         } else {
