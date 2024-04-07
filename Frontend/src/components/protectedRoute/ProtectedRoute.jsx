@@ -19,9 +19,9 @@ const ProtectedRoute = () => {
         }
     }
 
-    useEffect(() => {
+ /*    useEffect(() => {
         validatingUser()
-    }, [])
+    }, []) */
     
 
   return (
