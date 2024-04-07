@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 
 const validatingController = async(req, res) => {
     try {
-        const token = req.cookies.token
+        const token = await req.cookies.token
         if(!token) {
             return res.json('El token no existe')
         }
