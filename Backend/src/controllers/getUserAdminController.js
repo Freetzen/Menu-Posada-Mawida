@@ -24,7 +24,7 @@ const getUserAdminController = async (req, res) => {
             httpOnly: false,
             secure: true,
             SameSite: 'None',
-            domain: 'https://menu-posada-mawida.vercel.app/backofficepm',
+            domain: 'menu-posada-mawida.vercel.app',
             path: '/'
           })
           return res.status(200).json({ login: true, data: payload });
