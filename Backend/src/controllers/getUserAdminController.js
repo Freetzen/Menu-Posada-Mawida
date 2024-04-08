@@ -24,6 +24,7 @@ const getUserAdminController = async (req, res) => {
             httpOnly: false,
             secure: true,
             sameSite: 'None',
+            domain: 'menu-posada-mawida-production.up.railway.app',
             path: '/'
           })
           return res.status(200).json({ login: true, data: payload });
