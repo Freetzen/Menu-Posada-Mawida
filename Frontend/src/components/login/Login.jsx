@@ -53,7 +53,7 @@ const Login = () => {
     const checkUser = async () => {
       try {
         try {
-          const val = await userAdminProvider.ValidateAdmin()
+          const val = await userAdminProvider.validateAdmin()
           if(val?.auth === true){
             navigate(urlAdmin)            
           }
