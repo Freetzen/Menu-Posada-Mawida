@@ -9,8 +9,8 @@ const ProtectedRoute = () => {
 
     const validatingUser = async () => {
         try {
-            const {ValidateAdmin} = userAdminProvider
-            const val = await ValidateAdmin()
+            const {validateAdmin} = userAdminProvider
+            const val = await validateAdmin()
             console.log('Soy protected ----> ',val)
             if(!val || val === 'El token no existe'){
                 navigate(urlLogin)
