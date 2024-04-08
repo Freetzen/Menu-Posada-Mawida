@@ -23,7 +23,7 @@ const getUserAdminController = async (req, res) => {
             maxAge: 1000 * 60 * 60 * 24 , //24horas (1 segundo por 60 (1 minuto) por 60 (1 hora) por 24 (24 horas))
             httpOnly: false,
             secure: true,
-            SameSite: 'None',
+            sameSite: 'None',
             domain: 'menu-posada-mawida.vercel.app',
             path: '/'
           })
