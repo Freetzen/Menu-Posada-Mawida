@@ -19,9 +19,8 @@ server.use(express.json());
 server.use(cors({
     origin: ['https://menu-posada-mawida.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,
-    allowedHeaders: 'Content-Type, Authorization',
-}));
+    credentials: true
+}))
 
 
 server.use(session({
