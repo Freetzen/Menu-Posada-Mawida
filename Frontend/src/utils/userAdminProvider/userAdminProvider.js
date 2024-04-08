@@ -22,9 +22,8 @@ const userAdminProvider = {
             console.log(error.message)
         }
     },
-    async ValidateAdmin() {
+    async validateAdmin() {
         try {
-            axios.defaults.withCredentials = true;
             const response = await axios.post(`/auth/api/log/validating`)
             return response.data
         } catch (error) {
