@@ -21,8 +21,11 @@ const getUserAdminController = async (req, res) => {
           const token = jwt.sign(payload, process.env.SECRET_SIGN_JWT)
           res.cookie('token', token, { 
             maxAge: 1000 * 60 * 60 * 24 , //24horas (1 segundo por 60 (1 minuto) por 60 (1 hora) por 24 (24 horas))
-            httpOnly: true,
-            secure: true
+            httpOnly: false,
+            secure: true,
+            SameSite: none,
+            domain: 'https://menu-posada-mawida.vercel.app/',
+            path: '/'
           })
           return res.status(200).json({ login: true, data: payload });
         } else {
