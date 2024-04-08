@@ -9,7 +9,7 @@ const ProtectedRoute = () => {
 
     const validatingUser = async () => {
         try {
-            const val = await userAdminProvider.ValidateAdmin()
+            const val = await userAdminProvider.validateAdmin()
             console.log('Soy protected ----> ',val)
             if(!val || val === 'El token no existe'){
                 navigate(urlLogin)
@@ -19,9 +19,9 @@ const ProtectedRoute = () => {
         }
     }
 
- /*    useEffect(() => {
+    useEffect(() => {
         validatingUser()
-    }, []) */
+    }, [])
     
 
   return (
