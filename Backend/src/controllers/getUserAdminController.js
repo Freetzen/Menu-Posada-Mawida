@@ -21,7 +21,7 @@ const getUserAdminController = async (req, res) => {
           const token = jwt.sign(payload, process.env.SECRET_SIGN_JWT)
           res.cookie('token', token, { 
             maxAge: 1000 * 60 * 60 * 24 , //24horas (1 segundo por 60 (1 minuto) por 60 (1 hora) por 24 (24 horas))
-            httpOnly: false,
+            httpOnly: true,
             secure: true,
             sameSite: 'None',
             domain: 'menu-posada-mawida-production.up.railway.app',
