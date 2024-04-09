@@ -24,12 +24,10 @@ const userAdminProvider = {
     },
     async validateAdmin() {
         try {
-            axios.defaults.withCredentials = true;
-            const response = await axios.post(`/auth/api/log/validating`, { 
-                Headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
+            const headers = {
+                withCredentials: true
+            }
+            const response = await axios.post(`/auth/api/log/validating`, headers)
             return response.data
         } catch (error) {
             console.log(error.message)
