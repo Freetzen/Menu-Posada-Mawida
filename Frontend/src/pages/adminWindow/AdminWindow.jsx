@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import SearchBarAdmin from "../../components/adminUtils/SearchBarAdmin/SearchBarAdmin";
 import DetailAdmin from "../../components/adminUtils/detailAdmin/DetailAdmin";
 import drinksProvider from "../../utils/drinksProvider/drinksProvider";
@@ -19,7 +19,7 @@ import {
   Tr,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import axios from "axios";
+// import axios from "axios";
 
 const AdminWindow = () => {
   

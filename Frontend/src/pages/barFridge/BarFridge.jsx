@@ -31,7 +31,7 @@ const BarFridge = () => {
         bg={"#412A28"}
       >
         <Box>
-          <Image src={mawidaLogo} w={"500px"}></Image>
+          <Image src={mawidaLogo} w={{base:'350px',xl:'500px'}}></Image>
         </Box>
         <Box
           display={"flex"}

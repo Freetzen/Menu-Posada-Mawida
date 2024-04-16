@@ -43,7 +43,7 @@ const Home = () => {
           pb={"50px"}
         >
           <Flex justifyContent={'center'} alignContent={'center'}>
-            <Image src={mawidaLogo} w={'500px'} m={'0px 10px'}></Image>
+            <Image src={mawidaLogo} w={{base:'350px',xl:'500px'}}></Image>
           </Flex>
           <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
             <Text
