@@ -1,0 +1,32 @@
+.imagePlato {
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 1));
+}
+
+.background {
+  background-image: url("./../../../public/img/madera1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: -7px 0px 28px -3px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -7px 0px 28px -3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -7px 0px 28px -3px rgba(0, 0, 0, 0.75);
+}
+
+.fontUrbanist {
+  font-family: "Inter", sans-serif;
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1600px) {
+    .customText1 {
+      font-size: 50px !important;
+    }
+    .customText2 {
+        font-size: 30px !important;
+      }
+    .price{
+        font-size: 30px !important;
+    }
+    .text {
+        width: 100% !important;
+    }
+  }
