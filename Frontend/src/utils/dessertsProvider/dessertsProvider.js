@@ -31,7 +31,7 @@ const dessertsProvider = {
             const obj = {
                 id: id
             }
-            const drinkById = await axios.get('/drinks/id', {params: obj})
+            const drinkById = await axios.get('/desserts/id', {params: obj})
             return drinkById.data
         } catch (error) {
             console.log(error.message)

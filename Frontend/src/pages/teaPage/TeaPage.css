@@ -1,5 +1,6 @@
 #bgImage {
     background-image: url('./../../../public/img/glass-red-wine-bottle-bar-counter.jpg');
-    background-size: cover;
+    background-size:auto;
+    background-repeat: no-repeat;
     
 }

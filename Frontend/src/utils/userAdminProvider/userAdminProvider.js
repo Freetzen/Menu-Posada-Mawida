@@ -24,10 +24,12 @@ const userAdminProvider = {
     },
     async validateAdmin() {
         try {
-            const headers = {
-                withCredentials: true
-            }
-            const response = await axios.post(`/auth/api/log/validating`, headers)
+            const token = localStorage.getItem('token');
+            const response = await axios.post(`/auth/api/log/validating`,{}, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                  }
+            })
             return response.data
         } catch (error) {
             console.log(error.message)
