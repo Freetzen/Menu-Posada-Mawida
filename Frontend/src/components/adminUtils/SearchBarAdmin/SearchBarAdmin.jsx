@@ -6,7 +6,6 @@ import foodProvider from '../../../utils/foodProvider/foodProvider'
 import dessertsProvider from '../../../utils/dessertsProvider/dessertsProvider'
 import { Box, Button, Flex, Image, Input, Select } from '@chakra-ui/react'
 import mawidaLogo from "./../../../../public/img/mawida.png"; 
-import userAdminProvider from '../../../utils/userAdminProvider/userAdminProvider'
 
 const SearchBarAdmin = ({ setCategoryToEdit, setItemstoEdit, setDetailState, itemstoEdit, allProducts }) => {
 
@@ -86,7 +85,7 @@ const SearchBarAdmin = ({ setCategoryToEdit, setItemstoEdit, setDetailState, ite
     }
 
     const handleDestroy = () => {
-        userAdminProvider.destroySession()
+        localStorage.removeItem('token')
         navigate('/')
     }
 

@@ -29,6 +29,7 @@ const Login = () => {
       try {
         const data = await userAdminProvider.getUserAdmin(loginUser);
         if (data?.login) {
+          localStorage.setItem('token', data.token)
           return navigate("/backofficepmadmin");
         } else {
           Swal.fire({
