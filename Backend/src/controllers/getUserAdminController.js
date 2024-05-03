@@ -16,18 +16,11 @@ const getUserAdminController = async (req, res) => {
         if (passwordValidate) {
           const payload= {
             email: userDB.email,
+            role: userDB.role,
             id: userDB._id
           }
           const token = jwt.sign(payload, process.env.SECRET_SIGN_JWT)
-          res.cookie('token', token, { 
-            maxAge: 1000 * 60 * 60 * 24 , //24horas (1 segundo por 60 (1 minuto) por 60 (1 hora) por 24 (24 horas))
-            httpOnly: true,
-            secure: true,
-            sameSite: 'None',
-            domain: 'menu-posada-mawida-production.up.railway.app',
-            path: '/'
-          })
-          return res.status(200).json({ login: true, data: payload });
+          return res.status(200).json({ login: true, data: payload, token });
         } else {
           return res.status(200).json({ login: false, message: "Credenciales incorrectas." });
         }

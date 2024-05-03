@@ -17,10 +17,11 @@ server.use(morgan("dev"));
 server.use(express.json());
 
 server.use(cors({
-    origin: ['http://localhost:5173'],
+    origin: ['https://menu-posada-mawida.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
-    exposedHeaders: ['Set-Cookie'] // Agrega esta línea
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    preflightContinue: true
 }));
 
 

@@ -12,8 +12,8 @@ const router = express.Router()
 router.get('/food', getFoodController)
 router.get('/food/name', getFoodByNameController)
 router.get('/food/id', getFoodByIdController)
-router.post('/food', authJWT , postFoodController)
-router.put('/food', authJWT , putFoodController)
-router.delete('/food', authJWT, deleteFoodController)
+router.post('/food', authJWT, postFoodController)
+router.put('/food', putFoodController)
+router.delete('/food', deleteFoodController)
 
 export default router
