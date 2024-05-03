@@ -1,19 +1,20 @@
 import 'dotenv/config'
 import jwt from 'jsonwebtoken'
 
-const validatingController = async(req, res) => {
-    try {
-        const token = await req.cookies.token
-        console.log('TOKEN --------->', req.cookies.token)
-        if(!token) {
-            return res.status(401).json('El token no existe')
-        }
-        
-        const validPayload = jwt.verify(token, process.env.SECRET_SIGN_JWT)
-        res.status(200).json({auth: true})
-      } catch (error) {
-        res.status(401).json({ res: false, message: "Invalid Token" }); //401 sin autorización
-      }
-}
+const validatingController = async (req, res) => {
+  try {
+    const token = req.headers.authorization;
+    if (!token) {
+      return res.status(401).json("El token no existe");
+    }
+    const validPayload = jwt.verify(token.split(' ')[1], process.env.SECRET_SIGN_JWT)
+    if(validPayload.role === 'admin'){
+      return res.status(200).json({ auth: true });
+    }
+    res.status(200).json({ auth: false });
+  } catch (error) {
+    res.status(401).json({ auth: false, message: "Token invalido" })
+  }
+};
 
 export default validatingController

@@ -12,8 +12,8 @@ const router = express.Router()
 router.get('/drinks', getDrinksController)
 router.get('/drinks/name', getDrinksByNameController)
 router.get('/drinks/id', getDrinksByIdController)
-router.post('/drinks', authJWT , postDrinkController)
-router.put('/drinks', authJWT , putDrinkController)
-router.delete('/drinks', authJWT , deleteDrinkController)
+router.post('/drinks', postDrinkController)
+router.put('/drinks', putDrinkController)
+router.delete('/drinks', deleteDrinkController)
 
 export default router

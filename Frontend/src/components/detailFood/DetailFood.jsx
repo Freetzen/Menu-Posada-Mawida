@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import foodProvider from "../../utils/foodProvider/foodProvider";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 import "./Detail.css";
 
@@ -110,6 +110,7 @@ const DetailFood = () => {
           </Text>
         </Flex>
         <Flex mt={"10px"} justifyContent={{ base: "center", xl: "start" }}>
+        <NavLink to="/lunchdinner">
           <Button
             bg={"#212121"}
             color={"white"}
@@ -118,6 +119,7 @@ const DetailFood = () => {
           >
             Volver al Menu
           </Button>
+          </NavLink>
         </Flex>
       </Flex>
       <Flex
