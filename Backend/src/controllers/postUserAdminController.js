@@ -13,7 +13,7 @@ const postUserAdminController = async (req, res) => {
         return res.status(200).json(userAdmin)
     }
   } catch (error) {
-    
+    console.log(error.message)
   }
 }
 
