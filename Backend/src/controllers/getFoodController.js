@@ -4,6 +4,8 @@ import {findFood} from "../services/foodServices.js"
 export const getFoodController = async (req, res) => {
   try {
     const food = await findFood()
+    console.log('food')
+    console.log('food',food)
     if(food){
         return res.status(200).json(food)
     }
