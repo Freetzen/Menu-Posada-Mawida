@@ -118,19 +118,3 @@ const AdminWindow = () => {
   );
 };
 export default AdminWindow;
-
-
-
-{/* {itemstoEdit.map((item) => (
-<AdminCard
-  key={item._id}
-  id={item._id}
-  name={item.name}
-  price={item.price}
-  stock={item.stock}
-  productype={item.productype}
-  category={item.category}
-  accompaniment={item.accompaniment ? item.accompaniment : ""}
-  description={item.description ? item.description : ""}
-  setDetailState={setDetailState}
-/>))} */}

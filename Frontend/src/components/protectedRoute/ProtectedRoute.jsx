@@ -1,15 +1,17 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { Outlet, useNavigate } from "react-router-dom"
 import userAdminProvider from "../../utils/userAdminProvider/userAdminProvider"
 
 const urlLogin = import.meta.env.VITE_URL_LOGIN
 const ProtectedRoute = () => {
 
+    const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
 
     const validatingUser = async () => {
         try {
             const val = await userAdminProvider.validateAdmin()
+            setLoading(false)
             console.log('Soy protected ----> ', val)
             if(!val || val === 'El token no existe'){
                 navigate(urlLogin)
@@ -25,7 +27,11 @@ const ProtectedRoute = () => {
     
 
   return (
-    <Outlet/>
+    <>
+    {
+        !loading && <Outlet/>
+    }
+    </>
   )
 }
 

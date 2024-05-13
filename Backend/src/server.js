@@ -17,7 +17,7 @@ server.use(morgan("dev"));
 server.use(express.json());
 
 server.use(cors({
-    origin: ['https://menu-posada-mawida.vercel.app'],
+    origin: [process.env.URL_FRONT],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'],

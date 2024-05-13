@@ -41,7 +41,7 @@ const LunchDinner = () => {
 
     const bringDrinks = async () => {
       const drinksBD = await drinksProvider.getDrinks();
-      const drinksTea = drinksBD.filter((item) =>
+      const drinksTea = drinksBD?.filter((item) =>
         item.category.includes(currentCategory)
       );
       const filterActive = drinksTea.filter((item) =>

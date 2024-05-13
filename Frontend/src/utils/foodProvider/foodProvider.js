@@ -5,8 +5,8 @@ const foodProvider = {
 
     async getFood() {
         try {
-            axios.defaults.withCredentials = true;
             const food = await axios.get('/food')
+            console.log(food)
             return food.data
         } catch (error) {
             console.log(error.message)
