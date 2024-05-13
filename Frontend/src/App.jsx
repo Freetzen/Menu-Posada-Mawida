@@ -10,7 +10,7 @@ import Login from './components/login/Login'
 import LunchDinner from './pages/lunchdinner/LunchDinner'
 import BarFridge from './pages/barFridge/BarFridge'
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute'
-axios.defaults.baseURL = 'https://menu-posada-mawida.onrender.com'
+axios.defaults.baseURL = import.meta.env.VITE_URL_BACK
 
 const urlLogin = import.meta.env.VITE_URL_LOGIN
 const urlAdmin = import.meta.env.VITE_URL_ADMIN

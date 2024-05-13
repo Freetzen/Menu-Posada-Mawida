@@ -78,6 +78,7 @@ const DetailDrinks = () => {
           </Text>
         </Flex>
         <Flex mt={"10px"} justifyContent={{ base: "center", xl: "start" }}>
+        <NavLink to="/barfridge">
           <Button
             bg={"#212121"}
             color={"white"}
@@ -86,6 +87,7 @@ const DetailDrinks = () => {
           >
             Volver al Menu
           </Button>
+          </NavLink>
         </Flex>
       </Flex>
       <Flex
