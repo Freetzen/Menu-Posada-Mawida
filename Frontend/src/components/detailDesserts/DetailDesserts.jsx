@@ -107,18 +107,20 @@ const DetailDesserts = () => {
             fontWeight={300}
             letterSpacing={'-3px'}
           >
-            {info.price}$
+            $ {info.price}
           </Text>
         </Flex>
         <Flex mt={"10px"} justifyContent={{ base: "center", xl: "start" }}>
+        <NavLink to="/barfridge">
           <Button
             bg={"#212121"}
             color={"white"}
             fontWeight={400}
             _hover={"none"}
           >
-            Volver al Menu
+            Volver al Menu 2
           </Button>
+          </NavLink>
         </Flex>
       </Flex>
       <Flex

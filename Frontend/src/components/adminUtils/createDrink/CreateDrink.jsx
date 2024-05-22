@@ -70,7 +70,6 @@ const CreateDrink = () => {
     e.preventDefault();
     
     const create = await drinksProvider.postDrinks(product);
-    console.log(create)
     if (!create.error) {
       setProduct({
         name: "",

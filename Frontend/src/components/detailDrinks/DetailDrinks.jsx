@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import drinksProvider from '../../utils/drinksProvider/drinksProvider';
 import { useEffect, useState } from 'react';
 import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
@@ -24,7 +24,6 @@ const DetailDrinks = () => {
       useEffect(() => {
         getdetail()
       }, [])
-      console.log(info)
 
   return (
     <Box
@@ -74,7 +73,7 @@ const DetailDrinks = () => {
             fontWeight={300}
             letterSpacing={'-2px'}
           >
-            {info.price}$
+            $ {info.price}
           </Text>
         </Flex>
         <Flex mt={"10px"} justifyContent={{ base: "center", xl: "start" }}>
