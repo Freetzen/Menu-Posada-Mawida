@@ -12,7 +12,6 @@ const ProtectedRoute = () => {
         try {
             const val = await userAdminProvider.validateAdmin()
             setLoading(false)
-            console.log('Soy protected ----> ', val)
             if(!val || val === 'El token no existe'){
                 navigate(urlLogin)
             }

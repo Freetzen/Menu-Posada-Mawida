@@ -6,7 +6,6 @@ const foodProvider = {
     async getFood() {
         try {
             const food = await axios.get('/food')
-            console.log(food)
             return food.data
         } catch (error) {
             console.log(error.message)
