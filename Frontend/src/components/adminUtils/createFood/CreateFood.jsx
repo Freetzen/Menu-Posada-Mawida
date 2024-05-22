@@ -14,7 +14,6 @@ const CreateFood = () => {
     image: '',
     category: []
   })
-console.log(product)
   const handleCategoriesChange = (e) => {
     const { value } = e.target;
 

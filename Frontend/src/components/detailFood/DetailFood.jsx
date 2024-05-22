@@ -106,7 +106,7 @@ const DetailFood = () => {
             fontWeight={300}
             letterSpacing={'-3px'}
           >
-            {info.price}$
+           $ {info.price}
           </Text>
         </Flex>
         <Flex mt={"10px"} justifyContent={{ base: "center", xl: "start" }}>

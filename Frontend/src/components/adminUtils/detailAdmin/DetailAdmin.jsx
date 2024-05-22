@@ -92,7 +92,6 @@ const DetailAdmin = ({ setDetailState, detailState, setItemstoEdit }) => {
             [e.target.name]: e.target.value
         })
     }
-    console.log(product)
     const handleDeleteClick = async() => {
         try {
             const swal = await Swal.fire({
@@ -110,7 +109,6 @@ const DetailAdmin = ({ setDetailState, detailState, setItemstoEdit }) => {
 
                 if(product.productype === 'drinks'){
                     const deleteProduct = await drinksProvider.deleteDrinkById(product.id)
-                    console.log(deleteProduct)
                     if(deleteProduct.deleted){
                         Swal.fire({
                             title: `${deleteProduct.message}`,
